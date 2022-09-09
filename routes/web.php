@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MemberCategoryFeeController;
+use App\Http\Controllers\MemberContactController;
 use App\Http\Controllers\FeesController;
+use App\Http\Controllers\MemberEmploymentController;
+use App\Http\Controllers\MemberMemberContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,19 +32,30 @@ Route::get('/', function () {
 | Fee Controllers - Fees to be paid by each member category
 |--------------------------------------------------------------------------
 */
-Route::resource('/admin/fees', FeesController::class);
+Route::resource('/member_category_fees', MemberCategoryFeeController::class);
 
 /*
 |--------------------------------------------------------------------------
 | Contact Controllers - member contact details
 |--------------------------------------------------------------------------
 */
-Route::get('/admin/contact', [ContactController::class, 'index']);
-Route::get('/admin/contact/{user}/create', [ContactController::class, 'create']);
-Route::post('/admin/contact/{user}/store', [ContactController::class, 'store']);
-Route::get('/admin/contact/{contact}/show', [ContactController::class, 'show']);
-Route::get('/admin/contact/{contact}/edit', [ContactController::class, 'edit']);
-Route::patch('/admin/contact/{contact}/update', [ContactController::class, 'update']);
+Route::get('/members/contact', [MemberContactController::class, 'index']);
+Route::get('/members/contact/{member}/create', [MemberContactController::class, 'create']);
+Route::post('/members/contact/{member}/store', [MemberContactController::class, 'store']);
+Route::get('/members/contact/{member_contact}/show', [MemberContactController::class, 'show']);
+Route::get('/members/contact/{member_contact}/edit', [MemberContactController::class, 'edit']);
+Route::patch('/members/contact/{member_contact}/update', [MemberContactController::class, 'update']);
+Route::delete('/members/contact/{member_contact}/destroy', [MemberContactController::class, 'destroy']);
+
+
+Route::get('/members/employment', [MemberEmploymentController::class, 'index']);
+Route::get('/members/employment/{member}/create', [MemberEmploymentController::class, 'create']);
+Route::post('/members/employment/{member}/store', [MemberEmploymentController::class, 'store']);
+Route::get('/members/employment/{member_employment}/show', [MemberEmploymentController::class, 'show']);
+Route::get('/members/employment/{member_employment}/edit', [MemberEmploymentController::class, 'edit']);
+Route::patch('/members/employment/{member_employment}/update', [MemberEmploymentController::class, 'update']);
+Route::delete('/members/employment/{member_employment}/destroy', [MemberEmploymentController::class, 'destroy']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

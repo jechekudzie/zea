@@ -11,8 +11,8 @@ class ComplianceStatus extends Model
 
     protected $guarded = [];
 
-    public function subscription()
+    public function member_subscriptions()
     {
-        return $this->belongsTo(Subscription::class);
+        return $this->hasMany(MemberSubscription::class);
     }
 }

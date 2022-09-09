@@ -20,9 +20,10 @@ class DatabaseSeeder extends Seeder
             PaymentStatusesTableSeeder::class,
             PaymentMethodsTableSeeder::class,
             CompliancesTableSeeder::class,
-            UserCategoriesTableSeeder::class,
+            MemberCategoriesTableSeeder::class,
             ProvincesTableSeeder::class,
             CitiesTableSeeder::class,
+            IdentificationTypesTableSeeder::class,
         ]);
     }
 }

@@ -39,25 +39,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function user_category()
-    {
-        return $this->belongsTo(UserCategory::class);
-    }
-
-    public function contact()
-    {
-        return $this->hasOne(Contact::class);
-    }
-
-    public function subscriptions()
-    {
-        return $this->hasMany(Subscription::class);
-    }
-
-    public function payments()
-    {
-        return $this->hasMany(Payment::class);
-    }
 
     /*
     |--------------------------------------------------------------------------
@@ -65,15 +46,7 @@ class User extends Authenticatable
     |--------------------------------------------------------------------------
     */
 
-    public function add_user_contact($contact)
-    {
-        return $this->contact()->create($contact);
-    }
 
-    public function update_user_contact($contact)
-    {
-        return $this->contact()->update($contact);
-    }
 
 
 }

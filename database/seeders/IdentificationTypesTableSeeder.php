@@ -3,7 +3,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class PaymentChannelTableSeeder extends Seeder
+class IdentificationTypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class PaymentChannelTableSeeder extends Seeder
      */
     public function run()
     {
-        $payment_channels = include __DIR__.'/PaymentChannelSeeder.php';
-        DB::table('payment_channels')->insert($payment_channels);
+        $identification_types = include __DIR__ . '/IdentificationTypesSeeder.php';
+        DB::table('identification_types')->insert($identification_types);
     }
 }

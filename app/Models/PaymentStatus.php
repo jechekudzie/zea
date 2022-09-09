@@ -11,8 +11,8 @@ class PaymentStatus extends Model
 
     protected $guarded = [];
 
-    public function subscriptions()
+    public function member_subscriptions()
     {
-        return $this->hasMany(Subscription::class);
+        return $this->hasMany(MemberSubscription::class);
     }
 }

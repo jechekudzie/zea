@@ -11,14 +11,14 @@ class Payment extends Model
 
     protected $guarded = [];
 
-    public function user()
+    public function member()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Member::class);
     }
 
-    public function subscription()
+    public function member_subscription()
     {
-        return $this->belongsTo(Subscription::class);
+        return $this->belongsTo(MemberSubscription::class);
     }
 
     public function payment_method()

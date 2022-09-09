@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UserCategoriesTableSeeder extends Seeder
+class MemberCategoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class UserCategoriesTableSeeder extends Seeder
     public function run()
     {
         //
-        $user_categories = include __DIR__.'/UserCategoriesSeeder.php';
-        DB::table('user_categories')->insert($user_categories);
+        $user_categories = include __DIR__ . '/MemberCategoriesSeeder.php';
+        DB::table('member_categories')->insert($user_categories);
     }
 }
