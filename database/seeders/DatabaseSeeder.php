@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             ProvincesTableSeeder::class,
             CitiesTableSeeder::class,
             IdentificationTypesTableSeeder::class,
+            GendersTableSeeder::class,
+            TitlesTableSeeder::class,
         ]);
     }
 }
