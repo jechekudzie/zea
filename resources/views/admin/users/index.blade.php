@@ -60,7 +60,7 @@
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->name}}</td>
                                             <td>@if($user->roles){{$user->getRoleNames()->first()}}@endif</td>
-                                            <td>{{$user->user_member->member->member_category->name}}</td>
+                                            <td>@if($user->user_member){{$user->user_member->member->member_category->name}}@endif</td>
                                             <td>
                                                 <a href="{{url('admin/users/'.$user->id.'/edit')}}">Edit</a>
                                             </td>

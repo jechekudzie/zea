@@ -11,7 +11,7 @@
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div>
-                <h4 class="mb-3 mb-md-0">ZEA Members</h4>
+                <h4 class="mb-3 mb-md-0">Welcome to Dashboard</h4>
             </div>
             <div class="d-flex align-items-center flex-wrap text-nowrap">
                 <a href="{{url('/members/create')}}" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
@@ -20,6 +20,7 @@
                 </a>
             </div>
         </div>
+
 
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">

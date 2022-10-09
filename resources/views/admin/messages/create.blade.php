@@ -24,16 +24,16 @@
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div>
-                <h4 class="mb-3 mb-md-0"> Subscriber</h4>
+                <h4 class="mb-3 mb-md-0">Create Mew Message</h4>
             </div>
             <div class="d-flex align-items-center flex-wrap text-nowrap">
                 {{--<button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
                     <i class="btn-icon-prepend" data-feather="printer"></i>
                     Print
                 </button>--}}
-                <a href="{{url('/admin/subscribers/create')}}" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+                <a href="{{url('/admin/messages')}}" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
                     <i class="btn-icon-prepend" data-feather="arrow-left"></i>
-                    Back to subscribers
+                    Back to messages
                 </a>
             </div>
         </div>
@@ -41,18 +41,29 @@
             @include('errors')
         @endif
 
-        <form method="post" action="{{url('/admin/subscribers/create')}}" enctype="multipart/form-data">
+        @if (session('message'))
+            <div class="alert alert-primary dark alert-dismissible fade show" role="alert">
+                <strong>Message
+                    ! </strong> {{session('message')}}
+                <button class="btn-close" type="button" data-bs-dismiss="alert"
+                        aria-label="Close"></button>
+            </div>
+        @endif
+        <form method="post" action="{{url('/admin/messages')}}" enctype="multipart/form-data">
             @csrf
             <div class="row">
 
-                <div class="col-md-6 col-lg-6 mb-3">
-                    <label for="name" class="form-label">Enter email address</label>
-                    <input id="name" class="form-control" name="email" type="email">
+                <div class="col-md-12 col-lg-12 mb-3">
+                    <label for="name" class="form-label">Subject </label>
+                    <input id="name" class="form-control" name="subject" type="text">
                 </div>
-
+                <div class="col-md-12 col-lg-12 mb-3">
+                    <label for="name" class="form-label">Message Body</label>
+                    <textarea class="form-control editor" name="body"></textarea>
+                </div>
             </div>
             <div class="row">
-                <button type="submit" class="btn btn-success btn-block">subscribe</button>
+                <button type="submit" class="btn btn-success btn-block">Add message</button>
             </div>
         </form>
     </div>
@@ -99,4 +110,23 @@
 
     <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
 
+    <script type="text/javascript">
+        ClassicEditor
+            .create(document.querySelector('.editor'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+        ClassicEditor
+            .create(document.querySelector('.editor1'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 @endpush

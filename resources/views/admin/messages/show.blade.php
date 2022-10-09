@@ -11,21 +11,21 @@
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div>
-                <h4 class="mb-3 mb-md-0">Welcome {{ $member->title->name }} {{ $member->name }}</h4>
-                <h5 class="mb-3 mb-md-0">Registration number: ZEA{{ str_pad($member->id, 4, '0', STR_PAD_LEFT)  }}</h5>
+                <h4 class="mb-3 mb-md-0">Message {{ $message->title }} </h4>
             </div>
             <div class="d-flex align-items-center flex-wrap text-nowrap">
-                <a href="{{url('/members/subscriptions/'.$member->id.'/create')}}" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
+                <button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0"
+                        data-bs-toggle="modal" data-bs-target="#create_service">
                     <i class="btn-icon-prepend" data-feather="plus"></i>
-                    Subscribe
-                </a>
+                    Delete Message
+                </button>
             </div>
         </div>
 
         <div class="row profile-body">
 
             <!-- left wrapper start -->
-            <div class="d-none d-md-block col-md-4 col-xl-4 left-wrapper">
+            <div class="d-none d-md-block col-md-6 col-xl-6 left-wrapper">
                 <div class="card rounded">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-2">
@@ -48,26 +48,8 @@
                             </div>
                         </div>
 
-                        <div class="mt-3">
-                            <label class="tx-11 fw-bolder mb-0 text-uppercase">Member Category:</label>
-                            <p class="text-muted">{{$member->member_category->name}}</p>
-                        </div>
-                        <div class="mt-3">
-                            <label class="tx-11 fw-bolder mb-0 text-uppercase">DOb:</label>
-                            <p class="text-muted">{{$member->dob}}</p>
-                        </div>
-                        <div class="mt-3">
-                            <label class="tx-11 fw-bolder mb-0 text-uppercase">Identification:</label>
-                            <p class="text-muted">{{$member->identification_type->name}}<br/>
-                                {{$member->identification_type->description}} :{{$member->identification}}
-                            </p>
-                        </div>
-                        <div class="mt-3">
-                            <label class="tx-11 fw-bolder mb-0 text-uppercase">Gender:</label>
-                            <p class="text-muted">{{$member->gender->name}}</p>
-                        </div>
                         <div class="mt-3 d-flex social-links">
-
+                            {!! $message->body !!}
                         </div>
                     </div>
                 </div>
@@ -86,42 +68,45 @@
                             aria-label="Close"></button>
                 </div>
             @endif
-            <div class="col-md-8 col-xl-8 middle-wrapper">
-                <div class="row">
-                    <div class="table-responsive">
-                        <table id="dataTableExample" class="table">
-                            <thead>
-                            <tr>
-                                <th>Period</th>
-                                <th>Member category</th>
-                                <th>Payments</th>
-                                <th>Compliance</th>
-                                <th>Balance</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @if($member->member_subscriptions->count() > 0)
-                                @foreach($member->member_subscriptions as $subscription)
-                                    <tr>
-                                        <td>{{$subscription->period}}</td>
-                                        <td>{{$subscription->member_category->name}}</td>
-                                        <td>@if($subscription->payments)Payments ({{$subscription->payments->count()}})@endif</td>
-                                        <td>{{$subscription->compliance_status->name}}</td>
-                                        <td>Balance ${{$subscription->payments->sum('balance')}}</td>
-                                    </tr>
-                                @endforeach
-                            @endif
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!-- middle wrapper end -->
 
         </div>
 
 
     </div>
+
+    <div class="modal fade" id="create_service" tabindex="-1" aria-labelledby="exampleModalCenterTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Users</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="btn-close"></button>
+                </div>
+                <form method="post" enctype="multipart/form-data" action="{{url('/admin/messages/'.$message->id)}}">
+                    @method('DELETE')
+                    @csrf
+                    <div class="modal-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Delete {{$message->title}} </h6>
+
+                                <p>Are you sure you want to delete this message?</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-primary">Yes</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
 
 @stop
 

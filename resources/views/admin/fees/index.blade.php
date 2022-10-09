@@ -1,4 +1,4 @@
-@extends('layouts.member')
+@extends('layouts.admin')
 
 @push('head')
     <!-- Plugin css for this page -->

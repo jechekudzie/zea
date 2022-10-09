@@ -187,71 +187,87 @@
                 </div>
             </div>
         </nav>
-        <nav class="bottom-navbar">
-            <div class="container">
-                <ul class="nav page-navigation">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span class="menu-title">Dashboard</span>
-                        </a>
-                    </li>
+        @role('Admin')
+            <nav class="bottom-navbar">
+                <div class="container">
+                    <ul class="nav page-navigation">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span class="menu-title">Dashboard</span>
+                            </a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span class="menu-title">Member Category</span>
-                        </a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/members')}}">
+                                <span class="menu-title">Members</span>
+                            </a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/admin/member_categories')}}">
+                                <span class="menu-title">Member Category</span>
+                            </a>
+                        </li>
 
-                            <span class="menu-title">Payments</span>
-                            <i class="link-arrow"></i>
-                        </a>
-                        <div class="submenu">
-                            <ul class="submenu-item">
-                                <li class="nav-item"><a class="nav-link" href="{{url('/admin/member-category-fees')}}">Fees</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href="">Payment methods</a></li>
-                                <li class="nav-item"><a class="nav-link" href="">Payment status</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span class="menu-title">Reports</span>
-                        </a>
-                    </li>
+                                <span class="menu-title">Payments</span>
+                                <i class="link-arrow"></i>
+                            </a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link"
+                                                            href="{{url('/admin/member_category_fees')}}">Fees</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="">Payment methods</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="">Payment status</a></li>
+                                </ul>
+                            </div>
+                        </li>
 
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span class="menu-title">Reports</span>
+                            </a>
+                        </li>
 
-                            <span class="menu-title">User Management</span>
-                            <i class="link-arrow"></i>
-                        </a>
-                        <div class="submenu">
-                            <ul class="submenu-item">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{url('/admin/users')}}">Users</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{url('/admin/roles')}}">Roles</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{url('/admin/permissions')}}">Permissions</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">
-                            <i class="link-icon" data-feather="hash"></i>
-                            <span class="menu-title">Documentation</span></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/admin/messages')}}">
+                                <span class="menu-title">Messages</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <span class="menu-title">User Management</span>
+                                <i class="link-arrow"></i>
+                            </a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{url('/admin/users')}}">Users</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{url('/admin/roles')}}">Roles</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{url('/admin/permissions')}}">Permissions</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank"
+                               class="nav-link">
+                                <i class="link-icon" data-feather="hash"></i>
+                                <span class="menu-title">Documentation</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        @endrole
     </div>
     <!-- partial -->
 

@@ -13,7 +13,7 @@
     <title>ZEA | Zimbabwe Evaluation Association</title>
 
     <!-- Favicon and Touch Icons -->
-    <link href="{{asset('images/favicon.png')}}" rel="shortcut icon" type="image/png">
+    <link href="{{asset('logo.png')}}" rel="shortcut icon" type="image/png">
     <link href="{{asset('images/apple-touch-icon.png')}}" rel="apple-touch-icon">
     <link href="{{asset('images/apple-touch-icon-72x72.png')}}" rel="apple-touch-icon" sizes="72x72">
     <link href="{{asset('images/apple-touch-icon-114x114.png')}}" rel="apple-touch-icon" sizes="114x114">
@@ -48,8 +48,8 @@
     <!-- <link href="css/style.css" rel="stylesheet" type="text/css"> -->
 
 
-    @stack('head')
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+@stack('head')
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -79,20 +79,13 @@
                         </ul>
                     </div>
                     <div class="col-xl-auto ms-xl-auto header-top-right align-self-center text-center text-xl-end">
-                     {{--   <div class="element pt-0 pb-0">
-                            <ul class="styled-icons icon-dark icon-theme-colored1 icon-circled clearfix">
-                                <li><a class="social-link" href="#"><i class="fab fa-facebook"></i></a></li>
-                                <li><a class="social-link" href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a class="social-link" href="#"><i class="fab fa-youtube"></i></a></li>
-                            </ul>
-                        </div>--}}
                         <div class="element pt-0 pt-lg-10 pb-0">
                             <a href="{{url('/login')}}"
-                               class="btn btn-theme-colored2 btn-sm ajaxload-popup">Login</a>
+                               class="btn btn-theme-colored2 btn-sm" target="_blank">Login</a>
                         </div>
                         <div class="element pt-0 pt-lg-10 pb-0">
                             <a href="{{url('/register')}}"
-                               class="btn btn-theme-colored2 btn-sm ajaxload-popup">Register</a>
+                               class="btn btn-theme-colored2 btn-sm" target="_blank">Register</a>
                         </div>
                     </div>
                 </div>
@@ -179,7 +172,7 @@
         </div>
     </header>
 
-@yield('content')
+    @yield('content')
     <section class="bg-silver-light">
         <div class="container">
             <div class="section-content">
@@ -188,9 +181,12 @@
                         <form id="mailchimp-subscription-form1" class="newsletter-form mt-40" novalidate="true">
                             <label for="mce-EMAIL"></label>
                             <div class="input-group">
-                                <input type="email" id="mce-EMAIL" data-tm-height="45px" class="form-control" placeholder="Your Email" name="EMAIL" value="" style="height: 45px;">
+                                <input type="email" id="mce-EMAIL" data-tm-height="45px" class="form-control"
+                                       placeholder="Your Email" name="EMAIL" value="" style="height: 45px;">
                                 <div class="input-group-append tm-sc-button">
-                                    <button type="submit" class="btn btn-dark btn-sm" data-tm-height="45px" style="height: 45px;">Subscribe</button>
+                                    <button type="submit" class="btn btn-dark btn-sm" data-tm-height="45px"
+                                            style="height: 45px;">Subscribe
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -201,7 +197,7 @@
     </section>
 
 
-<!-- Footer -->
+    <!-- Footer -->
     <footer id="footer" class="footer layer-overlay overlay-dark-9" data-tm-bg-img="images/bg/bg2.jpg">
         <div class="footer-widget-area">
             <div class="container pt-90 pb-60">

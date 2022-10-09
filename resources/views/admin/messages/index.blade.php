@@ -11,43 +11,39 @@
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div>
-                <h4 class="mb-3 mb-md-0">ZEA Members</h4>
+                <h4 class="mb-3 mb-md-0">Messages</h4>
             </div>
             <div class="d-flex align-items-center flex-wrap text-nowrap">
-                <a href="{{url('/members/create')}}" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
-                    <i class="btn-icon-prepend" data-feather="user"></i>
-                    Add new member
+                <a href="{{url('/admin/messages/create')}}" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
+                    <i class="btn-icon-prepend" data-feather="plus"></i>
+                    Add message
                 </a>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Members</h6>
+                        <h6 class="card-title">Message</h6>
                         <div class="table-responsive">
                             <table id="dataTableExample" class="table">
                                 <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Category</th>
-                                    <th>Identification Number</th>
-                                    <th>Compliance</th>
-                                    <th>Balance</th>
-                                    <th>Profile</th>
-
+                                    <th>Subject</th>
+                                    <th>Message Body</th>
+                                    <th>Sent</th>
+                                    <th>Edit</th>
+                                    <th>View</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($members as $member)
+                                @foreach($messages as $message)
                                     <tr>
-                                        <td>{{$member->name}}</td>
-                                        <td>@if($member->member_category){{$member->member_category->name}}@endif</td>
-                                        <td>{{$member->identification}}</td>
-                                        <td>Non-compliance</td>
-                                        <td>0.00</td>
-                                        <td><a href="{{url('/members/'.$member->id)}}" target="_blank">Profile</a></td>
+                                        <td>{{$message->subject}}</td>
+                                        <td>{!! $message->body !!}</td>
+                                        <td>sent to (0)</td>
+                                        <td><a href="{{url('/admin/messages/'.$message->id.'/edit')}}">Edit</a></td>
+                                        <td><a href="{{url('/admin/messages/'.$message->id)}}">View</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

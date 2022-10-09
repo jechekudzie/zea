@@ -58,7 +58,7 @@
                             @endif
                             <div class="card text-black bg-default">
                                 <div class="card-header">
-                                    SOUNDZCmr
+                                    ZEA
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">{{$permission->name}} permissions</h5>

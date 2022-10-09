@@ -28,7 +28,7 @@
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="card-title">SOUNDZCmr</h6>
+                            <h6 class="card-title">ZEA</h6>
                             <div class="table-responsive">
                                 <!-- Session Status -->
                                 @if($errors->any())

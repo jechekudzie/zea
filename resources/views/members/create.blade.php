@@ -1,4 +1,4 @@
-@extends('layouts.member')
+@extends('layouts.admin')
 
 @push('head')
     <!-- Plugin css for this page -->
@@ -96,8 +96,8 @@
                                         <input id="name" class="form-control" name="name" value="{{old('name')}}" type="text">
                                     </div>
                                     <div class="col-md-6 col-lg-6 mb-3 ">
-                                        <label for="name" class="form-label">Dirt of birth</label>
-                                        <input id="datePickerExample" class="form-control" name="dob" type="text">
+                                        <label for="name" class="form-label">Date of birth</label>
+                                        <input id="datePickerExample" class="form-control datepicker" name="dob" type="text">
                                     </div>
 
                                     <div class="col-md-6 col-lg-6 mb-3">
@@ -186,11 +186,11 @@
 
                                     <div class="col-md-6 col-lg-6 mb-3 ">
                                         <label for="name" class="form-label">Start Date</label>
-                                        <input id="datePickerExample" class="form-control" name="start_date" type="text">
+                                        <input id="datePickerExample" class="form-control datepicker" name="start_date" type="text">
                                     </div>
                                     <div class="col-md-6 col-lg-6 mb-3 ">
                                         <label for="name" class="form-label">End Date</label>
-                                        <input id="datePickerExample" class="form-control" name="end_date" type="text">
+                                        <input id="datePickerExample" class="form-control datepicker" name="end_date" type="text">
                                     </div>
 
                                 </div>
@@ -276,4 +276,17 @@
     <script src="{{asset('/dashboard/js/datepicker.js')}}"></script>
     <script src="{{asset('/dashboard/js/timepicker.js')}}"></script>
     <!-- End custom js for this page -->
+
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
 @endpush

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckAuthController;
 use App\Http\Controllers\MemberCategoryController;
 use App\Http\Controllers\MemberCategoryFeesController;
@@ -7,12 +8,16 @@ use App\Http\Controllers\MemberContactController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MemberEmploymentController;
 use App\Http\Controllers\MemberSubscriptionController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\RolePermissionsController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\UsersController;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,41 +29,64 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/clear', function () {
 
-Route::get('/welcome', function () {
-    return view('welcome');
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+
+    return "Cleared!";
+
 });
 
-Route::get('/', function () {
-    $member_categories = \App\Models\MemberCategory::all();
-    return view('index',compact('member_categories'));
+Route::get('/certificate', function () {
+
+    $qr_code = QrCode::size(150)->generate('http://zea/1');
+    $html = '<img src="data:image/svg+xml;base64,' . base64_encode($qr_code) . '"  width="100" height="100" />';
+    $pdf = App::make('dompdf.wrapper');
+    $pdf->loadHTML(view('certificate')
+        ->with('html', $html))
+        ->setPaper('a5', 'landscape');
+    return $pdf->stream('Lineth2022.pdf');
+
 });
 
+Route::get('/check', function () {
+
+    return view('mail.message');
+
+});
+
+Route::get('/', [\App\Http\Controllers\SiteController::class, 'home']);
 
 /*
 |--------------------------------------------------------------------------
-| Fee Controllers - Fees to be paid by each member category
+|Administration dashboard
 |--------------------------------------------------------------------------
 */
-Route::resource('/admin/member_category_fees', MemberCategoryFeesController::class);
+Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => ['role:Admin']], function () {
+        Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
-/*
-|--------------------------------------------------------------------------
-| Fee Controllers - Member Categories to be paid by each member category
-|--------------------------------------------------------------------------
-*/
-Route::resource('/admin/member_categories', MemberCategoryController::class);
+        Route::resource('/admin/member_category_fees', MemberCategoryFeesController::class);
 
-Route::resource('/admin/subscribers', SubscriberController::class);
+        Route::resource('/admin/member_categories', MemberCategoryController::class);
 
-Route::resource('/admin/users', UsersController::class);
-Route::resource('/admin/roles', RolesController::class);
-Route::resource('/admin/permissions', PermissionsController::class);
+        Route::resource('/admin/subscribers', SubscriberController::class);
 
-Route::post('/admin/{role}/role_permissions', [RolePermissionsController::class, 'store']);
+        Route::resource('/admin/users', UsersController::class);
+        Route::resource('/admin/roles', RolesController::class);
+        Route::resource('/admin/permissions', PermissionsController::class);
+        Route::resource('/admin/messages', MessageController::class);
 
-/*Route::resource('/admin/subscriptions', 'Admin\SubscriptionsController');
-*/
+        Route::post('/admin/{role}/role_permissions', [RolePermissionsController::class, 'store']);
+
+        Route::resource('/admin/subscriptions', 'Admin\SubscriptionsController');
+
+    });
+});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +115,16 @@ Route::get('/members/employment/{member_employment}/show', [MemberEmploymentCont
 Route::get('/members/employment/{member_employment}/edit', [MemberEmploymentController::class, 'edit']);
 Route::patch('/members/employment/{member_employment}/update', [MemberEmploymentController::class, 'update']);
 Route::delete('/members/employment/{member_employment}/destroy', [MemberEmploymentController::class, 'destroy']);
+
+
+Route::get('/members/subscriptions', [MemberSubscriptionController::class, 'index']);
+Route::get('/members/subscriptions/{member}/create', [MemberSubscriptionController::class, 'create']);
+Route::post('/members/subscriptions/{member}/store', [MemberSubscriptionController::class, 'store']);
+Route::get('/members/subscriptions/{member_subscription}/show', [MemberSubscriptionController::class, 'show']);
+Route::get('/members/subscriptions/{member_subscription}/edit', [MemberSubscriptionController::class, 'edit']);
+Route::patch('/members/subscriptions/{member_subscription}/update', [MemberSubscriptionController::class, 'update']);
+Route::delete('/members/subscriptions/{member_subscription}/destroy', [MemberSubscriptionController::class, 'destroy']);
+Route::get('/members/subscriptions/{member_subscription}/check_payment', [MemberSubscriptionController::class, 'check_payment']);
 
 
 Route::get('/dashboard', function () {

@@ -1,13 +1,14 @@
 <?php
 
 $compliance_statuses = [
+
     [
-        'name'=>'Compliant',
+        'name'=>'Non-Compliant',
         'created_at'=>now(),
         'updated_at'=>now()
     ],
     [
-        'name'=>'Non-Compliant',
+        'name'=>'Compliant',
         'created_at'=>now(),
         'updated_at'=>now()
     ],
