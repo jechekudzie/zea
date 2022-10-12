@@ -177,6 +177,8 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class
 
+       /* LaravelQRCode\Providers\QRCodeServiceProvider::class,*/
+
     ],
 
     /*
@@ -233,6 +235,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class
+
     ],
 
 ];

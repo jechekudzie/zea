@@ -1,4 +1,5 @@
 <?php
+/*header('Content-type: text/x-vcard');*/
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckAuthController;
@@ -50,6 +51,62 @@ Route::get('/certificate', function () {
         ->setPaper('a5', 'landscape');
     return $pdf->stream('Lineth2022.pdf');
 
+});
+
+Route::get('/qr', function () {
+
+    $firstName = 'John';
+    $lastName = 'Doe';
+    $title = 'Mr.';
+    $email = 'john.doe@example.com';
+
+    // Addresses
+    $homeAddress = [
+        'type' => 'home',
+        'pref' => true,
+        'street' => '123 my street st',
+        'city' => 'My Beautiful Town',
+        'state' => 'LV',
+        'country' => 'Neverland',
+        'zip' => '12345-678'
+    ];
+    $wordAddress = [
+        'type' => 'work',
+        'pref' => false,
+        'street' => '123 my work street st',
+        'city' => 'My Dreadful Town',
+        'state' => 'LV',
+        'country' => 'Hell',
+        'zip' => '12345-678'
+    ];
+
+    $addresses = [$homeAddress, $wordAddress];
+
+    // Phones
+    $workPhone = [
+        'type' => 'work',
+        'number' => '001 555-1234',
+        'cellPhone' => false
+    ];
+    $homePhone = [
+        'type' => 'home',
+        'number' => '001 555-4321',
+        'cellPhone' => false
+    ];
+    $cellPhone = [
+        'type' => 'work',
+        'number' => '001 9999-8888',
+        'cellPhone' => true
+    ];
+
+    $phones = [$workPhone, $homePhone, $cellPhone];
+
+
+    return QrCode::size(400)->encoding('UTF-8')->generate("BEGIN:VCARD\nVERSION:3.0\nN:Nandigolo; Nakambale\nURL:http://futureafricainternational.org/\nEMAIL:nandi@futureafricainternational.org\nTEL;TYPE=work,pref:+264813749396\nEND:VCARD");
+    /*$qr_code = QrCode::vCard($firstName, $lastName, $title, $email, $addresses, $phones);
+    $html = '<img src="data:image/svg+xml;base64,' . base64_encode($qr_code) . '"  width="100" height="100" />';
+
+    echo $html;*/
 });
 
 Route::get('/check', function () {
