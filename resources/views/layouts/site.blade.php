@@ -68,10 +68,10 @@
                     <div class="col-xl-auto header-top-left align-self-center text-center text-xl-start">
                         <ul class="element contact-info">
                             <li class="contact-phone"><i class="fa fa-phone font-icon sm-display-block"></i> Tel:
-                                +440-98-5298
+                                +263 779 970 322 | +2263 779 970 322
                             </li>
                             <li class="contact-email"><i class="fa fa-envelope font-icon sm-display-block"></i>
-                                info@example.com
+                                admin@http://zimevalassoc.org
                             </li>
                             <li class="contact-address"><i class="fa fa-map font-icon sm-display-block"></i> ZEA Address
 
@@ -109,13 +109,11 @@
                                         <li class="active menu-item">
                                             <a href="#">Home</a>
                                         </li>
-                                        <li class="menu-item">
-                                            <a href="#">About Us</a>
-                                        </li>
+
                                         <li class="menu-item"><a href="#">About Us</a>
                                             <ul class="dropdown">
-                                                <li><a href="{{url('/leadership')}}">Leadership</a></li>
-                                                <li><a href="{{url('/our-history')}}">Our History</a></li>
+                                                <li><a href="{{url('/about_leadership')}}">Leadership</a></li>
+                                                <li><a href="{{url('/about_our-history')}}">Our History</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item"><a href="#">Membership</a>

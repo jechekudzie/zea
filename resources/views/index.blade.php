@@ -159,16 +159,15 @@
         <section class="">
             <div class="container">
                 <div class="section-content">
+
+
                     <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
                             <h2 class="text-uppercase line-height-1 font-weight-600 mt-0 line-bottom line-bottom-theme-colored1">
                                 About ZEA</h2>
-                            <h5 class="text-theme-colored2 mb-20">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit Perferendis repudiandae nostrum quibusdam! elit Perferendis repudiandae</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore atque officiis maxime
-                                suscipit expedita obcaecati nulla in ducimus iure quos quam recusandae dolor quas et
-                                perspiciatis voluptatum accusantium delectus nisi reprehenderit, eveniet fuga modi
-                                pariatur.</p>
+                                <p class="text-gray-dimgray font-bold">The Purpose of ZEA is to promote practices that will ensure that:</p>
+                                <p>Programmes are evaluated (emphasis should be on national/government programmes because donor funded programmes are already evaluated)</p>
+                                <p>Evaluations are credible</p>
                             <a href="#" class="btn btn-sm btn-theme-colored1 btn-flat mt-15 mr-15">Read more</a>
                             <a href="#" class="btn btn-sm btn-outline btn-outline-dark btn-flat mt-15">Contact Us</a>
                         </div>

@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use App\Http\Controllers\SiteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,12 +45,12 @@ Route::get('/clear', function () {
 
 Route::get('/certificate', function () {
 
-    $qr_code = QrCode::size(150)->generate('http://zea/1');
-    $html = '<img src="data:image/svg+xml;base64,' . base64_encode($qr_code) . '"  width="100" height="100" />';
+    $qr_code = QrCode::size(75)->generate('http://zea/1');
+    $html = '<img src="data:image/svg+xml;base64,' . base64_encode($qr_code) . '"  width="50" height="50" />';
     $pdf = App::make('dompdf.wrapper');
     $pdf->loadHTML(view('certificate')
         ->with('html', $html))
-        ->setPaper('a5', 'landscape');
+        ->setPaper('a5', 'portrait');
     return $pdf->stream('Lineth2022.pdf');
 
 });
@@ -115,7 +117,19 @@ Route::get('/check', function () {
 
 });
 
-Route::get('/', [\App\Http\Controllers\SiteController::class, 'home']);
+/*
+|--------------------------------------------------------------------------
+| Website front end controllers
+|--------------------------------------------------------------------------
+*/
+Route::get('/', [SiteController::class, 'index']);
+Route::get('/about', [SiteController::class, 'about']);
+Route::get('/about_leadership', [SiteController::class, 'about_leadership']);
+Route::get('/about_our_history', [SiteController::class, 'about_our_history']);
+
+Route::get('/member_benefits', [SiteController::class, 'member_benefits']);
+Route::get('/member_categories', [SiteController::class, 'member_categories']);
+Route::get('/member_directories', [SiteController::class, 'member_directories']);
 
 /*
 |--------------------------------------------------------------------------
@@ -151,11 +165,8 @@ Route::group(['middleware' => 'auth'], function () {
 |--------------------------------------------------------------------------
 */
 Route::get('/check-user', [CheckAuthController::class, 'user_has_member_account']);
-
 Route::resource('/members', MemberController::class);
-
 Route::resource('/members/subscriptions', MemberSubscriptionController::class);
-
 Route::get('/members/contact', [MemberContactController::class, 'index']);
 Route::get('/members/contact/{member}/create', [MemberContactController::class, 'create']);
 Route::post('/members/contact/{member}/store', [MemberContactController::class, 'store']);
