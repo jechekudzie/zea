@@ -161,24 +161,55 @@
                 <div class="section-content">
 
 
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                            <h2 class="text-uppercase line-height-1 font-weight-600 mt-0 line-bottom line-bottom-theme-colored1">
-                                About ZEA</h2>
-                                <p class="text-gray-dimgray font-bold">The Purpose of ZEA is to promote practices that will ensure that:</p>
-                                <p>Programmes are evaluated (emphasis should be on national/government programmes because donor funded programmes are already evaluated)</p>
-                                <p>Evaluations are credible</p>
-                            <a href="#" class="btn btn-sm btn-theme-colored1 btn-flat mt-15 mr-15">Read more</a>
-                            <a href="#" class="btn btn-sm btn-outline btn-outline-dark btn-flat mt-15">Contact Us</a>
-                        </div>
-                        <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7">
-                            <img src="{{asset('logo.png')}}"/>
+			<div class="col-sm-12 col-md-12 col-lg-8 col-xl-12">
+                <h3 class="text-uppercase font-weight-800 mt-0 mb-0 line-height-1"> ZEA PURPOSE AND MISSION</h3>
+                <p class="font-weight-800">The ZEA’s purpose will be achieved through improvements in the enabling environment, the demand and the supply of evaluations. By these Terms we mean the following:</p>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="tm-sc-icon-box icon-box icon-left tm-iconbox-icontype-font-icon text-left iconbox-centered-in-responsive iconbox-theme-colored1 icon-position-icon-left mb-30">
+                          <div class="icon-box-wrapper">
+                            <a class="icon icon-type-font-icon icon-circled icon-sm icon-dark icon-theme-colored1 mt-10">
+                            <i class="flaticon-medical-ambulance14"></i></a>
+                            <div class="icon-text">
+                              <h5 class="icon-box-title text-uppercase mb-10">Supply of Evaluation:</h5>
+                              <p class="mb-0">Agents (individuals and entities) that provide evaluation services will have the capacities to conduct quality evaluations, contribute to the development of the field of evaluation and have access to opportunities for the application of knowledge.</p>
+                            </div>
+                            <div class="clearfix"></div>
+                          </div>
                         </div>
                     </div>
+
+                  <div class="col-sm-4">
+                    <div class="tm-sc-icon-box icon-box icon-left tm-iconbox-icontype-font-icon text-left iconbox-centered-in-responsive iconbox-theme-colored1 icon-position-icon-left mb-30">
+                      <div class="icon-box-wrapper">
+                        <a class="icon icon-type-font-icon icon-circled icon-sm icon-dark icon-theme-colored1 mt-10">
+                        <i class="flaticon-medical-ambulance14"></i></a>
+                        <div class="icon-text">
+                          <h5 class="icon-box-title text-uppercase mb-10">Demand for Evaluation:</h5>
+                          <p class="mb-0">Agencies that implements or influence development activities (Government, local authorities, donors, foundations, trusts, NGOs, private sector) recognize, invest in and utilise evaluation to inform their interventions.</p>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="tm-sc-icon-box icon-box icon-left tm-iconbox-icontype-font-icon text-left iconbox-centered-in-responsive iconbox-theme-colored1 icon-position-icon-left mb-30">
+                      <div class="icon-box-wrapper">
+                        <a class="icon icon-type-font-icon icon-circled icon-sm icon-dark icon-theme-colored1 mt-10">
+                        <i class="flaticon-medical-ambulance14"></i></a>
+                        <div class="icon-text">
+                          <h5 class="icon-box-title text-uppercase mb-10">Enabling Environment</h5>
+                          <p class="mb-0">The country has in place laws, policies and practices that promote evaluation and its utilization and resources are allocated for evaluation and learning.</p>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
                 </div>
             </div>
         </section>
-
         <!-- Section: Courses -->
         <section class="bg-silver-light">
             <div class="container">
@@ -212,7 +243,7 @@
                                                         <li class="text-theme-colored1 pr-0 mr-10">Registration fee:
                                                             <span
                                                                 class="text-theme-colored2">@if($member_category->member_category_fee)
-                                                                    ${{$member_category->member_category_fee->registration_fee}}@endif</span>
+                                                            ${{$member_category->member_category_fee->registration_fee}}@endif</span>
                                                         </li>
                                                     </ul>
                                                     <a class="btn btn-xs btn-theme-colored2 font-weight-600 font-11 float-end flip mt-10"

@@ -12,6 +12,7 @@ class SiteController extends Controller
     public function index()
     {
         $member_categories = MemberCategory::all();
+
         return view('index', compact('member_categories'));
     }
 
@@ -22,7 +23,7 @@ class SiteController extends Controller
 
     public function about_our_history()
     {
-        return view('website.about');
+        return view('website.about_our_history');
     }
 
     public function about_leadership()

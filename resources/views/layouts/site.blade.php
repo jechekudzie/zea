@@ -113,7 +113,7 @@
                                         <li class="menu-item"><a href="#">About Us</a>
                                             <ul class="dropdown">
                                                 <li><a href="{{url('/about_leadership')}}">Leadership</a></li>
-                                                <li><a href="{{url('/about_our-history')}}">Our History</a></li>
+                                                <li><a href="{{url('/about_our_history')}}">Our History</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item"><a href="#">Membership</a>
