@@ -17,12 +17,13 @@ class Message extends Mailable implements ShouldQueue
      * @return void
      */
 
-    public $message;
+    public $message,$subscriber_id;
 
-    public function __construct($message)
+    public function __construct($message,$subscriber_id)
     {
         //
         $this->message = $message;
+        $this->subscriber_id = $subscriber_id;
     }
 
     /**

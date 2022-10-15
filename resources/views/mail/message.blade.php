@@ -300,6 +300,13 @@
                 </tbody>
             </table>
             <!-- end section -->
+           {{-- <a href="{{url('/unsubscribe_confirmation/'.$subscriber_id)}}" class="btn btn-danger"></a>--}}
+
+            @component('mail::button', ['url' => 'http://localhost:8000/unsubscribe_confirmation/'.$subscriber_id])
+                Unsubscribe (remove your
+                email from getting any updates)
+
+            @endcomponent
         </layout>
 
     </repeater>

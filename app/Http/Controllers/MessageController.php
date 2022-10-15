@@ -32,8 +32,8 @@ class MessageController extends Controller
         $subscribers = Subscriber::all();
         foreach ($subscribers as $subscriber) {
             try {
-
-                Mail::to($subscriber->email)->send(new \App\Mail\Message($message));
+                    $subscriber_id = $subscriber->id;
+                Mail::to($subscriber->email)->send(new \App\Mail\Message($message,$subscriber_id));
             } catch (\Exception $exception) {
                 Log::error($exception);
             }

@@ -21,12 +21,40 @@ class SubscriberController extends Controller
 
     public function store()
     {
-        Subscriber::create(request()->validate([
-            'email' => ['required','email', 'unique:subscribers'],
-        ],[
-            'email.unique:subscribers' => 'this email already exists, you use a different email to subscribe.'
-        ]));
+        $check_email = Subscriber::where('email', request('email'))->first();
+
+        if ($check_email != null) {
+            if ($check_email->Is_subscribe == 0) {
+                $check_email->update([
+                    'Is_subscribe' => 1
+                ]);
+            } else {
+                return back()->with('message', 'You email already exist in subscribers director.');
+            }
+        } else {
+            Subscriber::create(request()->validate([
+                'email' => ['required', 'email'],
+            ]));
+        }
 
         return back()->with('message', 'subscribed successfully.');
     }
+
+
+    public
+    function unsubscribe_confirmation(Subscriber $subscriber)
+    {
+        return view('website.unsubscribe_confirmation', compact('subscriber'));
+    }
+
+    public
+    function unsubscribe(Subscriber $subscriber)
+    {
+        $subscriber->update([
+            'Is_subscribe' => 0
+        ]);
+        return back()->with('message', 'subscribed successfully.')->with('message', 'You have successfully unsubscribed from our communication channel.');
+    }
+
+
 }

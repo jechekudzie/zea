@@ -103,7 +103,6 @@ Route::get('/qr', function () {
 
     $phones = [$workPhone, $homePhone, $cellPhone];
 
-
     return QrCode::size(400)->encoding('UTF-8')->generate("BEGIN:VCARD\nVERSION:3.0\nN:Nandigolo; Nakambale\nURL:http://futureafricainternational.org/\nEMAIL:nandi@futureafricainternational.org\nTEL;TYPE=work,pref:+264813749396\nEND:VCARD");
     /*$qr_code = QrCode::vCard($firstName, $lastName, $title, $email, $addresses, $phones);
     $html = '<img src="data:image/svg+xml;base64,' . base64_encode($qr_code) . '"  width="100" height="100" />';
@@ -131,6 +130,9 @@ Route::get('/member_benefits', [SiteController::class, 'member_benefits']);
 Route::get('/member_categories', [SiteController::class, 'member_categories']);
 Route::get('/member_directories', [SiteController::class, 'member_directories']);
 
+Route::get('/unsubscribe_confirmation/{subscriber}', [SubscriberController::class, 'unsubscribe_confirmation']);
+Route::post('/unsubscribe/{subscriber}', [SubscriberController::class, 'unsubscribe']);
+
 /*
 |--------------------------------------------------------------------------
 |Administration dashboard
@@ -157,7 +159,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     });
 });
-
 
 /*
 |--------------------------------------------------------------------------
