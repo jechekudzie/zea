@@ -71,9 +71,9 @@
                                 +263 779 970 322 | +2263 779 970 322
                             </li>
                             <li class="contact-email"><i class="fa fa-envelope font-icon sm-display-block"></i>
-                                admin@http://zimevalassoc.org
+                                admin@zimevalassoc.org
                             </li>
-                            <li class="contact-address"><i class="fa fa-map font-icon sm-display-block"></i> ZEA Address
+                            <li class="contact-address"><i class="fa fa-map font-icon sm-display-block"></i>
 
                             </li>
                         </ul>
@@ -107,7 +107,7 @@
                                      data-animation="none" data-align="right">
                                     <ul id="main-nav" class="menuzord-menu">
                                         <li class="active menu-item">
-                                            <a href="#">Home</a>
+                                            <a href="{{url('/')}}">Home</a>
                                         </li>
 
                                         <li class="menu-item"><a href="#">About Us</a>
@@ -118,9 +118,9 @@
                                         </li>
                                         <li class="menu-item"><a href="#">Membership</a>
                                             <ul class="dropdown">
-                                                <li><a href="{{url('/member-categories')}}">Member Categories</a></li>
-                                                <li><a href="{{url('/member-benefits')}}">Member Benefits</a></li>
-                                                <li><a href="{{url('/member-directories')}}">Member Directories</a></li>
+                                                <li><a href="{{url('/member_categories')}}">Member Categories</a></li>
+                                                <li><a href="{{url('/member_benefits')}}">Member Benefits</a></li>
+                                                <li><a href="{{url('/member_directories')}}">Member Directories</a></li>
                                                 <li><a href="{{url('/chapters')}}">Chapters</a></li>
                                                 <li><a href="{{url('/register')}}">Become a member</a></li>
                                             </ul>
@@ -147,7 +147,7 @@
                                         </li>
 
                                         <li class="menu-item">
-                                            <a href="#">Contact us</a>
+                                            <a href="{{url('/contact')}}">Contact us</a>
                                         </li>
                                     </ul>
                                 </nav>

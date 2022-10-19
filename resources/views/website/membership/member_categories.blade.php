@@ -12,7 +12,7 @@
         <div class="section-content">
           <div class="row">
             <div class="col-md-12 text-center">
-              <h2 class="title">Services</h2>
+              <h2 class="title">Membership</h2>
               <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumbs">
                 <div class="breadcrumbs">
                   <span><a href="#" rel="home">Home</a></span>
@@ -37,12 +37,12 @@
               <div class="tm-sc-services services-style-current-theme5">
                 <div class="tm-service">
                   <div class="thumb">
-                    <img src="images/services/ws1.jpg" alt="image">
+                    <img src="{{asset('/institution.png')}}" alt="image">
                     <a href="#" class="icon bg-theme-colored1"><i class="flaticon-medical-ambulance14"></i></a>
                   </div>
                   <div class="content">
-                    <h4 class="mt-0 mb-15">Emergency Care</h4>
-                    <p>Default text for Box Content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa temporibus aliquid natus eius blanditiis sed.</p>
+                    <h4 class="mt-0 mb-15">Institutional Membership</h4>
+                    <p>Institutional Membership is for</p>
                     <a href="#" target="_self" class="btn btn-theme-colored1 btn-sm btn-round mb-20"> Read More </a>
                   </div>
                 </div>
@@ -52,12 +52,12 @@
               <div class="tm-sc-services services-style-current-theme5">
                 <div class="tm-service">
                   <div class="thumb">
-                    <img src="images/services/ws2.jpg" alt="image">
+                    <img src="{{asset('/individual.png')}}" alt="image">
                     <a href="#" class="icon bg-theme-colored1"><i class="flaticon-medical-stethoscope10"></i></a>
                   </div>
                   <div class="content">
-                    <h4 class="mt-0 mb-15">Outdoor Checkup</h4>
-                    <p>Default text for Box Content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa temporibus aliquid natus eius blanditiis sed.</p>
+                    <h4 class="mt-0 mb-15">Individual Membership</h4>
+                    <p>Individual membership is for</p>
                     <a href="#" target="_self" class="btn btn-theme-colored1 btn-sm btn-round mb-20"> Read More </a>
                   </div>
                 </div>
@@ -67,57 +67,12 @@
               <div class="tm-sc-services services-style-current-theme5">
                 <div class="tm-service">
                   <div class="thumb">
-                    <img src="images/services/ws3.jpg" alt="image">
+                    <img src="{{asset('/student.png')}}" alt="image">
                     <a href="#" class="icon bg-theme-colored1"><i class="flaticon-medical-hospital35"></i></a>
                   </div>
                   <div class="content">
-                    <h4 class="mt-0 mb-15">Blood Test</h4>
-                    <p>Default text for Box Content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa temporibus aliquid natus eius blanditiis sed.</p>
-                    <a href="#" target="_self" class="btn btn-theme-colored1 btn-sm btn-round mb-20"> Read More </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-4">
-              <div class="tm-sc-services services-style-current-theme5">
-                <div class="tm-service">
-                  <div class="thumb">
-                    <img src="images/services/ws4.jpg" alt="image">
-                    <a href="#" class="icon bg-theme-colored1"><i class="flaticon-medical-illness"></i></a>
-                  </div>
-                  <div class="content">
-                    <h4 class="mt-0 mb-15">Operation Theatre</h4>
-                    <p>Default text for Box Content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa temporibus aliquid natus eius blanditiis sed.</p>
-                    <a href="#" target="_self" class="btn btn-theme-colored1 btn-sm btn-round mb-20"> Read More </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-4">
-              <div class="tm-sc-services services-style-current-theme5">
-                <div class="tm-service">
-                  <div class="thumb">
-                    <img src="images/services/ws5.jpg" alt="image">
-                    <a href="#" class="icon bg-theme-colored1"><i class="flaticon-medical-tablets9"></i></a>
-                  </div>
-                  <div class="content">
-                    <h4 class="mt-0 mb-15">Cancer Service</h4>
-                    <p>Default text for Box Content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa temporibus aliquid natus eius blanditiis sed.</p>
-                    <a href="#" target="_self" class="btn btn-theme-colored1 btn-sm btn-round mb-20"> Read More </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-4">
-              <div class="tm-sc-services services-style-current-theme5">
-                <div class="tm-service">
-                  <div class="thumb">
-                    <img src="images/services/ws6.jpg" alt="image">
-                    <a href="#" class="icon bg-theme-colored1"><i class="flaticon-medical-medical51"></i></a>
-                  </div>
-                  <div class="content">
-                    <h4 class="mt-0 mb-15">ICU Service</h4>
-                    <p>Default text for Box Content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa temporibus aliquid natus eius blanditiis sed.</p>
+                    <h4 class="mt-0 mb-15">Student Membership</h4>
+                    <p>Student membership is for </p>
                     <a href="#" target="_self" class="btn btn-theme-colored1 btn-sm btn-round mb-20"> Read More </a>
                   </div>
                 </div>

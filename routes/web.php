@@ -125,14 +125,14 @@ Route::get('/', [SiteController::class, 'index']);
 Route::get('/about', [SiteController::class, 'about']);
 Route::get('/about_leadership', [SiteController::class, 'about_leadership']);
 Route::get('/about_our_history', [SiteController::class, 'about_our_history']);
-
+Route::get('/contact', [SiteController::class, 'contact']);
 Route::get('/member_benefits', [SiteController::class, 'member_benefits']);
 Route::get('/member_categories', [SiteController::class, 'member_categories']);
 Route::get('/member_directories', [SiteController::class, 'member_directories']);
 
 Route::get('/unsubscribe_confirmation/{subscriber}', [SubscriberController::class, 'unsubscribe_confirmation']);
 Route::post('/unsubscribe/{subscriber}', [SubscriberController::class, 'unsubscribe']);
-
+Route::get('subscribers/index', [SubscriberController::class, 'index']);
 /*
 |--------------------------------------------------------------------------
 |Administration dashboard
@@ -160,6 +160,13 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 
+/*
+|--------------------------------------------------------------------------
+|Contact dashboard
+|--------------------------------------------------------------------------
+*/
+Route::get('contact-us', [ContactController::class, 'index']);
+Route::post('contact-us', [ContactController::class, 'store'])->name('contact.us.store');
 /*
 |--------------------------------------------------------------------------
 | Contact Controllers - member contact details

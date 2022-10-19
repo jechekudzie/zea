@@ -59,7 +59,7 @@
                     <div class="row">
                             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 h-100">
                                 <div class="staff-item mb-lg-40">
-                                <div class="staff-thumb"> <img alt="img" src="{{ asset('/zea.PNG') }}" class="w-100">
+                                <div class="staff-thumb"> <img alt="img" src="{{ asset('/shylock.jpg') }}" class="w-100">
                                 </div>
                                 <div class="staff-content">
                                     <h4 class="staff-name text-theme-colored1 mt-0">Shylock Muyengwa - <small>President</small></h4>
@@ -81,12 +81,11 @@
 
                             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 h-100">
                                 <div class="staff-item mb-lg-40">
-                                <div class="staff-thumb"> <img alt="img" src="{{asset('/zea.PNG')}}" class="w-100">
+                                <div class="staff-thumb"> <img alt="img" src="{{asset('/profpic.jpg')}}" class="w-100">
                                 </div>
                                 <div class="staff-content">
-                                    <h4 class="staff-name text-theme-colored1 mt-0">Shylock Muyengwa - <small>Vice-President</small></h4>
-                                    <p class="mb-20"> PhD
-                                        About Vice President</p>
+                                    <h4 class="staff-name text-theme-colored1 mt-0">Patrick Mpedzisi - <small>Vice-President</small></h4>
+                                    <p class="mb-20"> African Peer Review Mechanism, Pan African Parliament. He is a co-founder of Nahari Africa and founder of Mitupo.org.</p>
                                     <!--<div class="staff-social-part">
                                     <ul class="styled-icons icon-dark icon-theme-colored2 icon-sm icon-circled float-start mt-10">
                                         <li><a class="social-link" href="#"><i class="fab fa-facebook"></i></a></li>
@@ -105,7 +104,7 @@
                                 <div class="staff-thumb"> <img alt="img" src="{{asset('/zea.PNG')}}" class="w-100">
                                 </div>
                                 <div class="staff-content">
-                                    <h4 class="staff-name text-theme-colored1 mt-0">Shylock Muyengwa - <small>Chairman</small></h4>
+                                    <h4 class="staff-name text-theme-colored1 mt-0">Name Name - <small>Chairman</small></h4>
                                     <p class="mb-20"> PhD
                                         About Secretary</p>
                                     <!--<div class="staff-social-part">
@@ -124,7 +123,7 @@
                                 <div class="staff-thumb"> <img alt="img" src="{{asset('/zea.PNG')}}"class="w-100">
                                 </div>
                                 <div class="staff-content">
-                                    <h4 class="staff-name text-theme-colored1 mt-0">Shylock Muyengwa - <small>Secretary</small></h4>
+                                    <h4 class="staff-name text-theme-colored1 mt-0">Name Name - <small>Secretary</small></h4>
                                     <p class="mb-20"> PhD
                                         Managing Consultant | Center for Impact Evaluation
                                         Southern Africa Regional Representative to the African Evaluation Association</p>

@@ -31,6 +31,7 @@ class UsersController extends Controller
 
         $request->validate([
             'user_role' => ['required'],
+
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -39,6 +40,7 @@ class UsersController extends Controller
 
         $user = User::create([
             'name' => $request->name,
+
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'email_verified_at' => NOW(),

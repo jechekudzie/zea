@@ -21,6 +21,10 @@ class SiteController extends Controller
         return view('website.about');
     }
 
+    public function member_categories()
+    {
+        return view('website.membership.member_categories');
+    }
     public function about_our_history()
     {
         return view('website.about_our_history');
@@ -34,6 +38,11 @@ class SiteController extends Controller
     public function members()
     {
         return view('website.members');
+    }
+
+    public function contact()
+    {
+        return view('website.contact');
     }
 
     public function member_benefits()
