@@ -12,32 +12,29 @@ class ContactMail extends Mailable
     use Queueable, SerializesModels;
 
     /**
-     * Create a new message instance.
+     * Create a new contact instance.
      *
      * @return void
      */
     use Queueable, SerializesModels;
 
-    public $data;
+    public $contact;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct($data)
+    public function __construct($contact)
     {
-        $this->data = $data;
+        $this->contact = $contact;
     }
 
     /**
-     * Build the message.
+     * Build the contact.
      *
      * @return $this
      */
     public function build()
     {
-        return $this->subject('Contact US - '. $this->data->subject)
-                    ->view('emails.contact');
+
+        return $this->from($this->contact['email'])
+            ->subject( $this->contact['subject'])
+            ->markdown('mail.contact');
     }
 }

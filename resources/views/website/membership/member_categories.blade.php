@@ -37,12 +37,11 @@
               <div class="tm-sc-services services-style-current-theme5">
                 <div class="tm-service">
                   <div class="thumb">
-                    <img src="{{asset('/institution.png')}}" alt="image">
+                    <img style="width: 100%;height: 300px;" src="{{asset('/institution.png')}}" alt="image">
                     <a href="#" class="icon bg-theme-colored1"><i class="flaticon-medical-ambulance14"></i></a>
                   </div>
                   <div class="content">
                     <h4 class="mt-0 mb-15">Institutional Membership</h4>
-                    <p>Institutional Membership is for</p>
                     <a href="#" target="_self" class="btn btn-theme-colored1 btn-sm btn-round mb-20"> Read More </a>
                   </div>
                 </div>
@@ -52,12 +51,11 @@
               <div class="tm-sc-services services-style-current-theme5">
                 <div class="tm-service">
                   <div class="thumb">
-                    <img src="{{asset('/individual.png')}}" alt="image">
+                    <img style="width: 100%;height: 300px;" src="{{asset('/individual.png')}}" alt="image">
                     <a href="#" class="icon bg-theme-colored1"><i class="flaticon-medical-stethoscope10"></i></a>
                   </div>
                   <div class="content">
                     <h4 class="mt-0 mb-15">Individual Membership</h4>
-                    <p>Individual membership is for</p>
                     <a href="#" target="_self" class="btn btn-theme-colored1 btn-sm btn-round mb-20"> Read More </a>
                   </div>
                 </div>
@@ -67,12 +65,11 @@
               <div class="tm-sc-services services-style-current-theme5">
                 <div class="tm-service">
                   <div class="thumb">
-                    <img src="{{asset('/student.png')}}" alt="image">
+                    <img style="width: 100%;height: 300px;" src="{{asset('/student.png')}}" alt="image">
                     <a href="#" class="icon bg-theme-colored1"><i class="flaticon-medical-hospital35"></i></a>
                   </div>
                   <div class="content">
                     <h4 class="mt-0 mb-15">Student Membership</h4>
-                    <p>Student membership is for </p>
                     <a href="#" target="_self" class="btn btn-theme-colored1 btn-sm btn-round mb-20"> Read More </a>
                   </div>
                 </div>

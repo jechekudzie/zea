@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckAuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MemberCategoryController;
 use App\Http\Controllers\MemberCategoryFeesController;
 use App\Http\Controllers\MemberContactController;
@@ -166,7 +167,7 @@ Route::group(['middleware' => 'auth'], function () {
 |--------------------------------------------------------------------------
 */
 Route::get('contact-us', [ContactController::class, 'index']);
-Route::post('contact-us', [ContactController::class, 'store'])->name('contact.us.store');
+Route::post('/send_email', [ContactController::class, 'store'])->name('send_email');
 /*
 |--------------------------------------------------------------------------
 | Contact Controllers - member contact details

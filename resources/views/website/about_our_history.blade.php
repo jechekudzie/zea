@@ -59,7 +59,7 @@
                     <div class="row">
                             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 h-100">
                                 <div class="staff-item mb-lg-40">
-                                <div class="staff-thumb"> <img alt="img" src="{{ asset('/shylock.jpg') }}" class="w-100">
+                                <div class="staff-thumb"> <img style="width:350px;height: 350px;" alt="img" src="{{ asset('/shylock.jpg') }}" class="w-100">
                                 </div>
                                 <div class="staff-content">
                                     <h4 class="staff-name text-theme-colored1 mt-0">Shylock Muyengwa - <small>President</small></h4>
@@ -77,11 +77,9 @@
                                 </div>
                                 </div>
                             </div>
-
-
                             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 h-100">
                                 <div class="staff-item mb-lg-40">
-                                <div class="staff-thumb"> <img alt="img" src="{{asset('/profpic.jpg')}}" class="w-100">
+                                <div class="staff-thumb"> <img style="width:350px;height: 350px;" alt="img" src="{{asset('/profpic.jpg')}}" class="w-100">
                                 </div>
                                 <div class="staff-content">
                                     <h4 class="staff-name text-theme-colored1 mt-0">Patrick Mpedzisi - <small>Vice-President</small></h4>
@@ -97,48 +95,6 @@
                                 </div>
                                 </div>
                             </div>
-
-
-                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 h-100">
-                                <div class="staff-item mb-lg-40">
-                                <div class="staff-thumb"> <img alt="img" src="{{asset('/zea.PNG')}}" class="w-100">
-                                </div>
-                                <div class="staff-content">
-                                    <h4 class="staff-name text-theme-colored1 mt-0">Name Name - <small>Chairman</small></h4>
-                                    <p class="mb-20"> PhD
-                                        About Secretary</p>
-                                    <!--<div class="staff-social-part">
-                                    <ul class="styled-icons icon-dark icon-theme-colored2 icon-sm icon-circled float-start mt-10">
-                                        <li><a class="social-link" href="#"><i class="fab fa-facebook"></i></a></li>
-                                        <li><a class="social-link" href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a class="social-link" href="#"><i class="fab fa-youtube"></i></a></li>
-                                    </ul>
-                                    <a class="btn btn-theme-colored2 btn-xs p-10 float-end" href="#">view details</a>
-                                    </div>-->
-                                </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 h-100">
-                                <div class="staff-item mb-lg-40">
-                                <div class="staff-thumb"> <img alt="img" src="{{asset('/zea.PNG')}}"class="w-100">
-                                </div>
-                                <div class="staff-content">
-                                    <h4 class="staff-name text-theme-colored1 mt-0">Name Name - <small>Secretary</small></h4>
-                                    <p class="mb-20"> PhD
-                                        Managing Consultant | Center for Impact Evaluation
-                                        Southern Africa Regional Representative to the African Evaluation Association</p>
-                                    <!--<div class="staff-social-part">
-                                    <ul class="styled-icons icon-dark icon-theme-colored2 icon-sm icon-circled float-start mt-10">
-                                        <li><a class="social-link" href="#"><i class="fab fa-facebook"></i></a></li>
-                                        <li><a class="social-link" href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a class="social-link" href="#"><i class="fab fa-youtube"></i></a></li>
-                                    </ul>
-                                    <a class="btn btn-theme-colored2 btn-xs p-10 float-end" href="#">view details</a>
-                                    </div>-->
-                                </div>
-                                </div>
-                            </div>
-
 
                     </div>
                   </div>
