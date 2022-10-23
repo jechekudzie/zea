@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="main-content-area">
-    <section class="">
+    <!--<section class="">
         <div class="container">
           <div class="section-content">
             <div class="row">
@@ -23,7 +23,7 @@
                     </ul>
                 </div>
 
-                <!--<a href="#" class="btn btn-flat btn-theme-colored1 text-uppercase mt-20 mb-sm-30 border-left-theme-colored2-4px">Read More</a>-->
+                <a href="#" class="btn btn-flat btn-theme-colored1 text-uppercase mt-20 mb-sm-30 border-left-theme-colored2-4px">Read More</a>
               </div>
               <div class="col-md-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s">
                 <div class="row mb-10">
@@ -43,7 +43,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section>-->
     <section>
         <div class="container pt-10 pb-10">
           <div class="section-content">
