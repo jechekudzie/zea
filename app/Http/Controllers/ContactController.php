@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Contact;
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -21,19 +25,27 @@ class ContactController extends Controller
      *
      * @return response()
      */
-    public function store(Request $request)
+    public function store()
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|digits:10|numeric',
-            'subject' => 'required',
-            'message' => 'required'
+        $contact = request()->validate([
+            'name' => ['required'],
+            'email' => ['required', 'email'],
+            'phone' => ['required'],
+            'subject' => ['required'],
+            'message' => ['required']
         ]);
 
-        Contact::create($request->all());
+        try {
 
-        return redirect()->back()
-                         ->with(['success' => 'Thank you for contact us. we will contact you shortly.']);
+            Mail::to('nigel@leadingdigital.africa')->send(new ContactMail($contact));
+            return back()->with('message', 'Thank you for contact us. we will contact you shortly.');
+
+        } catch (\Exception $exception) {
+            Log::error($exception);
+            return back()->with('message', 'email failed to send, log has been recorded.');
+
+        }
+
+
     }
 }

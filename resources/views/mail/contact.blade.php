@@ -1,9 +1,12 @@
-<h2>Hey, It's me {{ $data->name }}</h2>
+@component('mail::message')
+<img src="{{asset('logo.png')}}">
+
+<h4 style="color: black;"> Dear ZEA, </h4>
 <br>
-<strong>User details: </strong><br>
-<strong>Name: </strong>{{ $data->name }} <br>
-<strong>Email: </strong>{{ $data->email }} <br>
-<strong>Phone: </strong>{{ $data->phone }} <br>
-<strong>Subject: </strong>{{ $data->subject }} <br>
-<strong>Message: </strong>{{ $data->user_query }} <br><br>
-Thank you
+<p style="color: black;">  {{$contact['message']}}</p>
+<br>
+
+Regards,<br>
+{{$contact['name']}},<br>
+{{$contact['phone']}}
+@endcomponent
