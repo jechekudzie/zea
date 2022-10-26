@@ -144,7 +144,7 @@ Route::get('subscribers/index', [SubscriberController::class, 'index']);
 Route::resource('/admin/users', UsersController::class);
 Route::resource('/admin/roles', RolesController::class);
 Route::resource('/admin/permissions', PermissionsController::class);
-Route::resource('/admin/rates', RateController::class);
+Route::resource('/admin/rate', RateController::class);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['role:Admin']], function () {

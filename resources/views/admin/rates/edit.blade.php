@@ -24,14 +24,14 @@
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div>
-                <h4 class="mb-3 mb-md-0">Add new rate</h4>
+                <h4 class="mb-3 mb-md-0">Add rate</h4>
             </div>
             <div class="d-flex align-items-center flex-wrap text-nowrap">
                 {{--<button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
                     <i class="btn-icon-prepend" data-feather="printer"></i>
                     Print
                 </button>--}}
-                <a href="{{url('/admin/member_category_fees')}}" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+                <a href="{{url('/admin/rate')}}" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
                     <i class="btn-icon-prepend" data-feather="arrow-left"></i>
                     Back to rates
                 </a>
@@ -42,26 +42,25 @@
         @endif
 
         @if (session('message'))
-            <div class="alert alert-primary dark alert-dismissible fade show" rate="alert">
+            <div class="alert alert-primary dark alert-dismissible fade show" role="alert">
                 <strong>Message
                     ! </strong> {{session('message')}}
                 <button class="btn-close" type="button" data-bs-dismiss="alert"
                         aria-label="Close"></button>
             </div>
         @endif
-        <form method="post" action="{{url('/admin/rates/'.$rate->id)}}" enctype="multipart/form-data">
+        <form method="post" action="{{url('/admin/rate/'.$rate->id)}}" enctype="multipart/form-data">
             @method('PATCH')
             @csrf
             <div class="row">
 
                 <div class="col-md-6 col-lg-6 mb-3">
-                    <label for="name" class="form-label">Current rate</label>
-                    <input id="rate" class="form-control" name="rate" value="{{$rates->rate}}" type="number">
+                    <label for="name" class="form-label">Rate</label>
+                    <input id="name" class="form-control" name="rate" value="{{$rate->rate}}" type="number" step="any">
                 </div>
-
             </div>
             <div class="row">
-                <button type="submit" class="btn btn-success btn-block">Add rate</button>
+                <button type="submit" class="btn btn-success btn-block">Update rate</button>
             </div>
         </form>
     </div>

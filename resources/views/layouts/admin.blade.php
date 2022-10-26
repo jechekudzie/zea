@@ -220,6 +220,7 @@
                                     <li class="nav-item"><a class="nav-link"
                                                             href="{{url('/admin/member_category_fees')}}">Fees</a>
                                     </li>
+                                    <li class="nav-item"><a class="nav-link" href="{{url('/admin/rate')}}">Rates</a></li>
                                     <li class="nav-item"><a class="nav-link" href="">Payment methods</a></li>
                                     <li class="nav-item"><a class="nav-link" href="">Payment status</a></li>
                                 </ul>

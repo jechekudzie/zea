@@ -14,9 +14,9 @@
                 <h4 class="mb-3 mb-md-0">Rates</h4>
             </div>
             <div class="d-flex align-items-center flex-wrap text-nowrap">
-                <a href="{{url('/admin/member_categories/create')}}" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
+                <a href="{{url('/admin/rate/create')}}" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
                     <i class="btn-icon-prepend" data-feather="user"></i>
-                    Add current rate
+                    Add Current rate
                 </a>
             </div>
         </div>
@@ -38,9 +38,8 @@
                                 @foreach($rates as $rate)
                                     <tr>
                                         <td>{{$rate->rate}}</td>
-
-                                        <td><a href="{{url('/admin/rates/'.$rate->id.'/edit')}}">Edit</a></td>
-                                        <td><a href="{{url('/admin/rates/'.$rate->id)}}">View</a></td>
+                                        <td><a href="{{url('/admin/rate/'.$rate->id.'/edit')}}">Edit</a></td>
+                                        <td><a href="{{url('/admin/rate/'.$rate->id)}}">View</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

@@ -24,16 +24,16 @@
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div>
-                <h4 class="mb-3 mb-md-0">Create membership category fee</h4>
+                <h4 class="mb-3 mb-md-0">Add rate</h4>
             </div>
             <div class="d-flex align-items-center flex-wrap text-nowrap">
                 {{--<button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
                     <i class="btn-icon-prepend" data-feather="printer"></i>
                     Print
                 </button>--}}
-                <a href="{{url('/admin/member_category_fees')}}" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+                <a href="{{url('/admin/rate')}}" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
                     <i class="btn-icon-prepend" data-feather="arrow-left"></i>
-                    Back to fees
+                    Back to rates
                 </a>
             </div>
         </div>
@@ -49,25 +49,17 @@
                         aria-label="Close"></button>
             </div>
         @endif
-        <form method="post" action="{{url('/admin/member_categories')}}" enctype="multipart/form-data">
+        <form method="post" action="{{url('/admin/rate')}}" enctype="multipart/form-data">
             @csrf
             <div class="row">
 
                 <div class="col-md-6 col-lg-6 mb-3">
-                    <label for="name" class="form-label">Category name</label>
-                    <input id="name" class="form-control" name="name" type="text">
-                </div>
-                <div class="col-md-6 col-lg-6 mb-3">
-                    <label for="name" class="form-label">Category description</label>
-                    <textarea class="form-control editor" name="description"></textarea>
-                </div>
-                <div class="col-md-6 col-lg-6 mb-3">
-                    <label for="name" class="form-label">Category benefits</label>
-                    <textarea  class="form-control editor1" name="benefits"></textarea>
+                    <label for="name" class="form-label">Rate</label>
+                    <input id="name" class="form-control" name="rate"  type="number" step="any">
                 </div>
             </div>
             <div class="row">
-                <button type="submit" class="btn btn-success btn-block">Add category</button>
+                <button type="submit" class="btn btn-success btn-block">update rate</button>
             </div>
         </form>
     </div>
