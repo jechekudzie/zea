@@ -12,6 +12,7 @@ use App\Http\Controllers\MemberEmploymentController;
 use App\Http\Controllers\MemberSubscriptionController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PermissionsController;
+use App\Http\Controllers\RateController;
 use App\Http\Controllers\RolePermissionsController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SubscriberController;
@@ -143,6 +144,7 @@ Route::get('subscribers/index', [SubscriberController::class, 'index']);
 Route::resource('/admin/users', UsersController::class);
 Route::resource('/admin/roles', RolesController::class);
 Route::resource('/admin/permissions', PermissionsController::class);
+Route::resource('/admin/rate', RateController::class);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['role:Admin']], function () {
