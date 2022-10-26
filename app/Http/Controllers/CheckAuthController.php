@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MemberCategory;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,15 +29,26 @@ class CheckAuthController extends Controller
                     if ($user->user_member->count() > 0) {
                         return redirect('/members/' . $user->user_member->member->id);
                     } else {
-                        return redirect('/members/create');
+                        return $this->check_member_category($user->member_category_id);
                     }
                 } else {
-                    return redirect('/members/create');
+                    return $this->check_member_category($user->member_category_id);
                 }
 
             }
         }
 
+
+    }
+
+    public function check_member_category($member_category_id)
+    {
+        $member_category = MemberCategory::find($member_category_id);
+        if (strtolower($member_category->name) == 'student' || strtolower($member_category->name) == 'individual') {
+            return redirect('/members/create');
+        }else{
+            return redirect('/members/institution/create');
+        }
 
     }
 

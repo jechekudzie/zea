@@ -20,17 +20,19 @@ class MemberSubscriptionController extends Controller
 
     public function create(Member $member)
     {
-        /*
-         1. Get member current category
-         2. calculate Amount to be paid based member category
-         */
 
-        if ($member->member_subscriptions->count() <= 0) {
-            $amount_invoiced = $member->member_category->member_category_fee->registration_fee;
-        } else {
-            $amount_invoiced = $member->member_category->member_category_fee->subscription_fee;
+        $balance = 0.00;
+        $subscription_fee = $member->member_category->member_category_fee->subscription_fee;
+
+        if ($member->member_subscriptions->count() > 0) {
+
+            $balance = $member->member_subscriptions->sum('balance');
         }
-        return view('members.member_subscriptions.create', compact('member', 'amount_invoiced'));
+
+        $amount_invoiced = $member->member_category->member_category_fee->subscription_fee;
+
+        return view('members.member_subscriptions.create',
+            compact('member', 'amount_invoiced', 'subscription_fee', 'balance'));
     }
 
 

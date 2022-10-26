@@ -60,47 +60,15 @@
                             <div id="wizard" class="wizard">
                                 <h2>Personal information</h2>
                                 <section>
-                                    <h4>Personal information</h4>
+                                    <h4>Institution information</h4>
                                     <div class="row">
-                                        <div class="col-md-6 col-lg-6 mb-3">
-                                            <label class="form-label">Gender</label>
-                                            <div>
-                                                @foreach($genders as $gender)
-                                                    <div class="form-check form-check-inline">
-                                                        <input type="radio" class="form-check-input" name="gender_id"
-                                                               value="{{$gender->id}}" id="gender1">
-                                                        <label class="form-check-label" for="gender1">
-                                                            {{$gender->name}}
-                                                        </label>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-6 mb-3">
-                                            <label class="form-label">Title</label>
-                                            <div>
-                                                @foreach($titles as $title)
-                                                    <div class="form-check form-check-inline">
-                                                        <input type="radio" class="form-check-input" name="title_id"
-                                                               value="{{$title->id}} {{old('title_id') == $title->id ? 'checked='.'"checked"' : ''}}"
-                                                               id="title_id">
-                                                        <label class="form-check-label" for="title_id">
-                                                            {{$title->name}}
-                                                        </label>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-
                                         <div class="col-md-6 col-lg-6 mb-3 ">
-                                            <label for="name" class="form-label">Full name</label>
-                                            <input type="text" class="form-control" name="name"
-                                                   value="{{\Illuminate\Support\Facades\Auth::user()->name}}" readonly>
+                                            <label for="name" class="form-label">Institution name</label>
+                                            <input id="name" class="form-control" name="name" value="{{old('name')}}" type="text">
                                         </div>
                                         <div class="col-md-6 col-lg-6 mb-3 ">
-                                            <label for="name" class="form-label">Date of birth</label>
-                                            <input id="datePickerExample" class="form-control datepicker" name="dob"
-                                                   type="text">
+                                            <label for="name" class="form-label">Date Of Incorporation</label>
+                                            <input id="datePickerExample" class="form-control datepicker" name="dob" type="text">
                                         </div>
 
                                         <div class="col-md-6 col-lg-6 mb-3">
@@ -114,10 +82,9 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6 col-lg-6 mb-3">
-                                            <label for="name" class="form-label">Identification</label>
+                                            <label for="name" class="form-label">Company registration number</label>
                                             <input id="name" class="form-control" name="identification" type="text">
                                         </div>
-
                                     </div>
                                 </section>
 
@@ -151,51 +118,43 @@
                                         </div>
                                         <div class="col-md-6 col-lg-6 mb-3">
                                             <label for="name" class="form-label">Contact Number</label>
-                                            <input id="name" class="form-control" name="contact_number" type="text">
-                                        </div>
-                                        <div class="col-md-6 col-lg-6 mb-3">
-                                            <label for="name" class="form-label">Contact email</label>
-                                            <input id="name" class="form-control" name="contact_email" type="text">
+                                            <input id="name" class="form-control" name="contactnumber" type="text">
                                         </div>
                                     </div>
                                 </section>
 
-                                @if(strtolower(\Illuminate\Support\Facades\Auth::user()->member_category->name) != 'institution')
-                                    <h2>Employment information</h2>
-                                    <section>
-                                        <h4>Employment information</h4>
-                                        <div class="row">
-                                            <div class="col-md-6 col-lg-6 mb-3">
-                                                <label for="name" class="form-label">Company Name</label>
-                                                <input id="name" class="form-control" name="company" type="text">
-                                            </div>
-                                            <div class="col-md-6 col-lg-6 mb-3">
-                                                <label for="name" class="form-label">Occupation</label>
-                                                <input id="name" class="form-control" name="occupation" type="text">
-                                            </div>
-                                            <div class="col-md-6 col-lg-6 mb-3">
-                                                <label for="name" class="form-label">Position</label>
-                                                <input id="name" class="form-control" name="position" type="text">
-                                            </div>
-                                            <div class="col-md-6 col-lg-6 mb-3">
-                                                <label for="name" class="form-label">Qualification</label>
-                                                <input id="name" class="form-control" name="qualification" type="text">
-                                            </div>
-
-                                            <div class="col-md-6 col-lg-6 mb-3 ">
-                                                <label for="name" class="form-label">Start Date</label>
-                                                <input id="datePickerExample" class="form-control datepicker"
-                                                       name="start_date" type="text">
-                                            </div>
-                                            <div class="col-md-6 col-lg-6 mb-3 ">
-                                                <label for="name" class="form-label">End Date</label>
-                                                <input id="datePickerExample" class="form-control datepicker"
-                                                       name="end_date" type="text">
-                                            </div>
-
+                                <h2>Employment information</h2>
+                                <section>
+                                    <h4>Employment information</h4>
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6 mb-3">
+                                            <label for="name" class="form-label">Company Name</label>
+                                            <input id="name" class="form-control" name="company" type="text">
                                         </div>
-                                    </section>
-                                @endif
+                                        <div class="col-md-6 col-lg-6 mb-3">
+                                            <label for="name" class="form-label">Occupation</label>
+                                            <input id="name" class="form-control" name="occupation" type="text">
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-3">
+                                            <label for="name" class="form-label">Position</label>
+                                            <input id="name" class="form-control" name="position" type="text">
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-3">
+                                            <label for="name" class="form-label">Qualification</label>
+                                            <input id="name" class="form-control" name="qualification" type="text">
+                                        </div>
+
+                                        <div class="col-md-6 col-lg-6 mb-3 ">
+                                            <label for="name" class="form-label">Start Date</label>
+                                            <input id="datePickerExample" class="form-control datepicker" name="start_date" type="text">
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-3 ">
+                                            <label for="name" class="form-label">End Date</label>
+                                            <input id="datePickerExample" class="form-control datepicker" name="end_date" type="text">
+                                        </div>
+
+                                    </div>
+                                </section>
 
                                 <h2>Terms & Conditions</h2>
                                 <section>

@@ -51,5 +51,10 @@ class User extends Authenticatable
         return $this->hasOne(UserMember::class);
     }
 
+    public function member_category()
+    {
+        return $this->belongsTo(MemberCategory::class);
+    }
+
 
 }

@@ -55,20 +55,12 @@
                 <div class="col-md-6 col-lg-6 mb-3">
                     <label for="categorySelect" class="form-label">Membership category</label>
                     <select class="form-select" name="member_category_id" id="categorySelect">
-                        <option value="">Membership category</option>
+                        <option value="">Choose Membership category</option>
                         @foreach($member_categories as $member_category)
                             <option
                                 value="{{$member_category->id}}">{{$member_category->name}}</option>
                         @endforeach
                     </select>
-                </div>
-                <div class="col-md-6 col-lg-6 mb-3">
-                    <label for="name" class="form-label">Application fee</label>
-                    <input id="name" class="form-control" name="application_fee" type="number" step="any">
-                </div>
-                <div class="col-md-6 col-lg-6 mb-3">
-                    <label for="name" class="form-label">Registration fee</label>
-                    <input id="name" class="form-control" name="registration_fee" type="number" step="any">
                 </div>
                 <div class="col-md-6 col-lg-6 mb-3">
                     <label for="name" class="form-label">Subscription fee</label>
@@ -91,11 +83,6 @@
     <!-- Custom js for this page -->
     <script src="{{asset('dashboard/js/wizard.js')}}"></script>
     <!-- End custom js for this page -->
-
-
-
-
-
 
     <!-- Plugin js for this page -->
     <script src="{{asset('/dashboard/vendors/jquery-validation/jquery.validate.min.js"')}}"></script>

@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/check-user');
+        return redirect('/check_user');
     }
 
     /**

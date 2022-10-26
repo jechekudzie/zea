@@ -25,10 +25,7 @@ class MemberCategoryFeesController extends Controller
     {
         MemberCategoryFee::create(request()->validate([
             'member_category_id' => ['required', 'unique:member_category_fees'],
-            'application_fee' => ['nullable'],
-            'registration_fee' => ['nullable'],
             'subscription_fee' => ['required'],
-
         ]));
 
         return back()->with('message', 'fee added successfully.');
@@ -50,8 +47,6 @@ class MemberCategoryFeesController extends Controller
     {
         $member_category_fee->update(request()->validate([
             'member_category_id' => ['required'],
-            'application_fee' => ['nullable'],
-            'registration_fee' => ['nullable'],
             'subscription_fee' => ['required'],
         ]));
         return redirect('/admin/member_category_fees')->with('message', 'fee updated successfully.');

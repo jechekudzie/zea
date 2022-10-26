@@ -139,6 +139,11 @@ Route::get('subscribers/index', [SubscriberController::class, 'index']);
 |Administration dashboard
 |--------------------------------------------------------------------------
 */
+
+Route::resource('/admin/users', UsersController::class);
+Route::resource('/admin/roles', RolesController::class);
+Route::resource('/admin/permissions', PermissionsController::class);
+
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['role:Admin']], function () {
         Route::get('/admin', [AdminController::class, 'index'])->name('admin');
@@ -149,9 +154,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::resource('/admin/subscribers', SubscriberController::class);
 
-        Route::resource('/admin/users', UsersController::class);
-        Route::resource('/admin/roles', RolesController::class);
-        Route::resource('/admin/permissions', PermissionsController::class);
+
+
         Route::resource('/admin/messages', MessageController::class);
 
         Route::post('/admin/{role}/role_permissions', [RolePermissionsController::class, 'store']);
@@ -173,8 +177,9 @@ Route::post('/send_email', [ContactController::class, 'store'])->name('send_emai
 | Contact Controllers - member contact details
 |--------------------------------------------------------------------------
 */
-Route::get('/check-user', [CheckAuthController::class, 'user_has_member_account']);
+Route::get('/check_user', [CheckAuthController::class, 'user_has_member_account']);
 Route::resource('/members', MemberController::class);
+Route::get('/members/institution/create', [MemberController::class,'create_institution']);
 Route::resource('/members/subscriptions', MemberSubscriptionController::class);
 Route::get('/members/contact', [MemberContactController::class, 'index']);
 Route::get('/members/contact/{member}/create', [MemberContactController::class, 'create']);

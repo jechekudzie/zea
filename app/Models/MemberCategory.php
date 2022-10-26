@@ -25,4 +25,10 @@ class MemberCategory extends Model
     {
         return $this->hasMany(MemberSubscription::class);
     }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
 }

@@ -36,33 +36,58 @@ class MemberController extends Controller
         //return view('members.create', compact('member_categories', 'identification_types'));
     }
 
+    public function create_institution()
+    {
+        $identification_types = IdentificationType::whereIn('id', [4])->get();
+        $provinces = Province::all();
+        $cities = City::all();
+        $genders = Gender::all();
+        $titles = Title::all();
+        return view('members.create_institution', compact('identification_types',
+            'provinces', 'cities', 'genders', 'titles'));
+        //return view('members.create', compact('member_categories', 'identification_types'));
+    }
+
     public function store()
     {
         //dd(request()->all());
         if (Auth::check()) {
-            $member = Member::create(request()->validate([
+            $user = Auth::user();
+            $member_category_id = $user->member_category_id;
+            if (strtolower($user->member_category->name) == 'student' || strtolower($user->member_category->name) == 'individual') {
+                $member = Member::create(request()->validate([
+                    'title_id' => ['required'],
+                    'gender_id' => ['required'],
+                    'dob' => ['required'],
+                    'identification_type_id' => ['required'],
+                    'identification' => ['required'],
+                    'name' => ['required', 'min:3'],
+                ]));
+            } else {
+                $member = Member::create(request()->validate([
+                    'dob' => ['required'],
+                    'identification_type_id' => ['required'],
+                    'identification' => ['required'],
+                    'name' => ['required', 'min:3'],
+                ]));
 
-                'title_id' => ['required'],
-                'gender_id' => ['required'],
-                'dob' => ['required'],
-                'member_category_id' => ['required'],
-                'identification_type_id' => ['required'],
-                'identification' => ['required'],
-                'name' => ['required', 'min:3'],
-            ]));
+            }
+            $member->update([
+                'member_category_id' => $member_category_id
+            ]);
 
             $member->add_member_contact(request()->validate([
                 'province_id' => ['required'],
                 'city_id' => ['required'],
                 'physical_address' => ['required'],
-                'contact_email' => ['nullable'],
-                'contact_number' => ['nullable'],
+                'contact_email' => ['required'],
+                'contact_number' => ['required'],
             ]));
             $member->add_member_employment(request()->validate([
-                'company' => ['required'],
-                'occupation' => ['required'],
-                'position' => ['required'],
-                'qualification' => ['required'],
+                'company' => ['nullable'],
+                'occupation' => ['nullable'],
+                'position' => ['nullable'],
+                'qualification' => ['nullable'],
                 'start_date' => ['nullable'],
                 'end_date' => ['nullable'],
             ]));

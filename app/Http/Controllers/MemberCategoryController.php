@@ -21,7 +21,6 @@ class MemberCategoryController extends Controller
     public function store()
     {
         MemberCategory::create(request()->validate([
-            'category_id' => ['required', 'unique:member_category'],
             'name' => ['required'],
             'description' => ['nullable'],
             'benefits' => ['nullable'],
