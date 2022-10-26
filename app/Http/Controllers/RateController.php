@@ -14,6 +14,8 @@ class RateController extends Controller
     public function index()
     {
         //
+        $rates = Rate::all();
+        return view('admin.rates.index', compact('rates'));
     }
 
     /**
@@ -23,7 +25,7 @@ class RateController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.rates.create');
     }
 
     /**
@@ -34,7 +36,11 @@ class RateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rate = Rate::create(request()->validate([
+            'rate' => 'required'
+        ]));
+
+        return back()->with('message', 'Rate created successfully');
     }
 
     /**
@@ -43,9 +49,9 @@ class RateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Rate $rate)
     {
-        //
+           return view('admin.rates.show', compact('rate'));
     }
 
     /**
@@ -54,9 +60,9 @@ class RateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Rate $rate)
     {
-        //
+        return view('admin.rates.edit', compact('rate'));
     }
 
     /**
@@ -66,9 +72,13 @@ class RateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Rate $rate)
     {
-        //
+        $rate->update(request()->validate([
+            'rate' => ['required'],
+        ]));
+
+        return back()->with('message', 'Rate updated successfully');
     }
 
     /**
@@ -77,8 +87,11 @@ class RateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Rate $rate)
     {
-        //
+        $rate = $rate->rate;
+        $rate->delete();
+
+        return redirect('/admin/rates')->with('message', $rate . ' deleted successfully');
     }
 }

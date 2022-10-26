@@ -47,10 +47,10 @@ class RolesController extends Controller
         //
 
         $role = Role::create(request()->validate([
-            'name' => 'required'
+            'rate' => 'required'
         ]));
 
-        return back()->with('message', 'Role created successfully');
+        return back()->with('message', 'Rate created successfully');
     }
 
     /**
