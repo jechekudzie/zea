@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Auth;
 class MemberController extends Controller
 {
     //
+
+
     public function index()
     {
         $members = Member::all()->sortBy('id');
@@ -50,7 +52,6 @@ class MemberController extends Controller
 
     public function store()
     {
-        //dd(request()->all());
         if (Auth::check()) {
             $user = Auth::user();
             $member_category_id = $user->member_category_id;
@@ -98,6 +99,14 @@ class MemberController extends Controller
                     'member_id' => $member->id,
                 ]);
             }
+            if (strtolower($member->member_category->name) == 'institution') {
+                $prefix = 'IM';
+            } else {
+                $prefix = 'IN';
+            }
+            $member->update([
+                'member_registration_number' => $prefix . str_pad($member->id, 4, 0, STR_PAD_LEFT)
+            ]);
             return redirect('/members/' . $member->id);
         } else {
             return redirect('/login');
@@ -106,6 +115,13 @@ class MemberController extends Controller
 
     public function show(Member $member)
     {
+        /*if ($member->member_beneficiaries->count() > 0) {
+            foreach ($member->member_beneficiaries as $member_beneficiary) {
+
+                dd($member_beneficiary->get_beneficiary_member($member_beneficiary->beneficiary)->member_category->name);
+            }
+        }*/
+
         return view('members.show', compact('member'));
     }
 

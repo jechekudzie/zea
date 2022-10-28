@@ -58,17 +58,17 @@
                         <form method="post" action="{{url('/members')}}" enctype="multipart/form-data">
                             @csrf
                             <div id="wizard" class="wizard">
-                                <h2>Personal information</h2>
+                                <h2>Institution Details</h2>
                                 <section>
-                                    <h4>Institution information</h4>
+                                    <h4>Company information</h4>
                                     <div class="row">
                                         <div class="col-md-6 col-lg-6 mb-3 ">
                                             <label for="name" class="form-label">Institution name</label>
-                                            <input id="name" class="form-control" name="name" value="{{old('name')}}" type="text">
+                                            <input id="name" class="form-control" name="name" value="{{\Illuminate\Support\Facades\Auth::user()->name}}" readonly type="text">
                                         </div>
                                         <div class="col-md-6 col-lg-6 mb-3 ">
                                             <label for="name" class="form-label">Date Of Incorporation</label>
-                                            <input id="datePickerExample" class="form-control datepicker" name="dob" type="text">
+                                            <input id="datePickerExample" class="form-control datepicker" data-date-format="Y-d-m" name="dob" type="text">
                                         </div>
 
                                         <div class="col-md-6 col-lg-6 mb-3">
@@ -114,47 +114,20 @@
                                         </div>
                                         <div class="col-md-6 col-lg-6 mb-3">
                                             <label for="name" class="form-label">Physical Address</label>
-                                            <input id="name" class="form-control" name="physical_address" type="text">
+                                            <textarea id="name" class="form-control" name="physical_address"></textarea>
                                         </div>
                                         <div class="col-md-6 col-lg-6 mb-3">
                                             <label for="name" class="form-label">Contact Number</label>
-                                            <input id="name" class="form-control" name="contactnumber" type="text">
+                                            <input id="name" class="form-control" name="contact_number" type="tel">
+                                        </div>
+
+                                        <div class="col-md-6 col-lg-6 mb-3">
+                                            <label for="name" class="form-label">Contact email</label>
+                                            <input class="form-control" name="contact_email" type="email" value="{{\Illuminate\Support\Facades\Auth::user()->email}}" readonly>
                                         </div>
                                     </div>
                                 </section>
 
-                                <h2>Employment information</h2>
-                                <section>
-                                    <h4>Employment information</h4>
-                                    <div class="row">
-                                        <div class="col-md-6 col-lg-6 mb-3">
-                                            <label for="name" class="form-label">Company Name</label>
-                                            <input id="name" class="form-control" name="company" type="text">
-                                        </div>
-                                        <div class="col-md-6 col-lg-6 mb-3">
-                                            <label for="name" class="form-label">Occupation</label>
-                                            <input id="name" class="form-control" name="occupation" type="text">
-                                        </div>
-                                        <div class="col-md-6 col-lg-6 mb-3">
-                                            <label for="name" class="form-label">Position</label>
-                                            <input id="name" class="form-control" name="position" type="text">
-                                        </div>
-                                        <div class="col-md-6 col-lg-6 mb-3">
-                                            <label for="name" class="form-label">Qualification</label>
-                                            <input id="name" class="form-control" name="qualification" type="text">
-                                        </div>
-
-                                        <div class="col-md-6 col-lg-6 mb-3 ">
-                                            <label for="name" class="form-label">Start Date</label>
-                                            <input id="datePickerExample" class="form-control datepicker" name="start_date" type="text">
-                                        </div>
-                                        <div class="col-md-6 col-lg-6 mb-3 ">
-                                            <label for="name" class="form-label">End Date</label>
-                                            <input id="datePickerExample" class="form-control datepicker" name="end_date" type="text">
-                                        </div>
-
-                                    </div>
-                                </section>
 
                                 <h2>Terms & Conditions</h2>
                                 <section>
@@ -194,7 +167,7 @@
             transitionEffect: "slideLeft",
             enableFinishButton: !1,
             onStepChanged: function (event, currentIndex, priorIndex) {
-                if (currentIndex == 3) {
+                if (currentIndex == 2) {
                     var $input = $('<input style="margin-left: 5px" type="submit" class="btn btn-primary" value="Add Member"/>');
                     $input.appendTo($('ul[aria-label=Pagination]'));
                 } else {
@@ -204,9 +177,6 @@
         });
 
     </script>
-
-
-
 
     <!-- Plugin js for this page -->
     <script src="{{asset('/dashboard/vendors/jquery-validation/jquery.validate.min.js"')}}"></script>

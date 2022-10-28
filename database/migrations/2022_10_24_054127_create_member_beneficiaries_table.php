@@ -16,7 +16,8 @@ class CreateMemberBeneficiariesTable extends Migration
         Schema::create('member_beneficiaries', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('member_id');
-            $table->unsignedBigInteger('beneficiary_id');
+            $table->unsignedBigInteger('beneficiary');
+            $table->foreign('beneficiary')->references('id')->on('members');
             $table->timestamps();
         });
     }

@@ -17,11 +17,13 @@ class CreateMemberSubscriptionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('member_id');
             $table->unsignedBigInteger('member_category_id');
-            $table->unsignedBigInteger('compliance_status_id')->default(1);
+            $table->unsignedBigInteger('compliance_status_id')->default(1);//if balance is 0
             $table->string('period');
             $table->boolean('certificate_issued')->default(0);//0 is no 1 is  yes
             $table->boolean('invoice_sent')->default(0);//0 is no 1 is  yes
-            $table->timestamp('activation_date')->nullable();//0 is no 1 is  yes
+            $table->boolean('is_approved')->default(0);//0 is no 1 is  yes
+            $table->timestamp('start_date')->nullable();//0 is no 1 is  yes
+            $table->timestamp('expiry_date')->nullable();//0 is no 1 is  yes
             $table->timestamps();
         });
     }

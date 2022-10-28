@@ -8,11 +8,6 @@ $payment_statuses = [
         'updated_at'=>now()
     ],
     [
-        'name'=>'Payment Plan',
-        'created_at'=>now(),
-        'updated_at'=>now()
-    ],
-    [
         'name'=>'Owing',
         'created_at'=>now(),
         'updated_at'=>now()

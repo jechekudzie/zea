@@ -18,8 +18,7 @@
     <div style="background-image:url('logo_back.png');background-size: contain;background-position: center;
     background-repeat:
 no-repeat; border: 2px dashed #131a74; padding: 0 2% 6.12442rem">
-        <h4 style="text-align: left;"><span style="color: blue">ZEA/</span>{{$member->member_registration_number}}
-            /{{$member_subscription->period}}</h4>
+        <h4 style="text-align: left;"><span style="color: blue">ZEA</span>IN00017/2022</h4>
         <div style="text-align: center;padding-top: 25px;">
             <img style="margin-top: -40px" height="80" src="logo.png">
         </div>
@@ -27,20 +26,19 @@ no-repeat; border: 2px dashed #131a74; padding: 0 2% 6.12442rem">
         <table style="table-layout: fixed; width: 100%; ">
             <tr>
                 <td style="padding: 10px" colspan="2">This is to certify that</td>
-                <td style="padding: 10px">{{$member->name}}</td>
+                <td style="padding: 10px">Lineth Mandodza</td>
             </tr>
             <tr>
                 <td style="padding: 10px" colspan="2">Registration Number</td>
-                <td style="padding: 10px">ZEA/{{$member->member_registration_number}}</td>
+                <td style="padding: 10px">ZEA/IN00017</td>
             </tr>
             <tr>
                 <td style="padding: 10px" colspan="2">Is fully subscribed as</td>
-                <td style="padding: 10px">{{$member->member_category->name}}</td>
+                <td style="padding: 10px">Individual Member</td>
             </tr>
             <tr>
-                <td style="padding: 10px;" colspan="2">Validity<br/>
-                <td style="padding: 5px;font-size: 14px;color:blue;font-weight: bold;"> {{date('Y-m-d',strtotime($member_subscription->start_date))}}
-                    - {{date('Y-m-d',strtotime($member_subscription->expiry_date))}}</td>
+                <td style="padding: 10px;" colspan="2">Valid<br/>
+                <td style="padding: 10px"> 09/10/2022 - 09/10/2023</td>
 
             </tr>
             <tr>

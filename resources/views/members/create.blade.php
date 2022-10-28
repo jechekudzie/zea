@@ -99,7 +99,7 @@
                                         </div>
                                         <div class="col-md-6 col-lg-6 mb-3 ">
                                             <label for="name" class="form-label">Date of birth</label>
-                                            <input id="datePickerExample" class="form-control datepicker" name="dob"
+                                            <input id="datePickerExample" class="form-control datepicker" data-date-format="Y-d-m" name="dob"
                                                    type="text">
                                         </div>
 
@@ -151,11 +151,11 @@
                                         </div>
                                         <div class="col-md-6 col-lg-6 mb-3">
                                             <label for="name" class="form-label">Contact Number</label>
-                                            <input id="name" class="form-control" name="contact_number" type="text">
+                                            <input id="name" class="form-control" name="contact_number" type="tel">
                                         </div>
                                         <div class="col-md-6 col-lg-6 mb-3">
                                             <label for="name" class="form-label">Contact email</label>
-                                            <input id="name" class="form-control" name="contact_email" type="text">
+                                            <input id="name" class="form-control" name="contact_email" type="email" value="{{\Illuminate\Support\Facades\Auth::user()->email}}" readonly>
                                         </div>
                                     </div>
                                 </section>

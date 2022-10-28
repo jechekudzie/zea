@@ -1,0 +1,70 @@
+@extends('layouts.admin')
+
+@push('head')
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{{asset('/dashboard/vendors/datatables.net-bs5/dataTables.bootstrap5.css')}}">
+    <!-- End plugin css for this page -->
+@endpush
+@section('content')
+
+    <div class="page-content">
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+            <div>
+                <h4 class="mb-3 mb-md-0">Messages</h4>
+            </div>
+            <div class="d-flex align-items-center flex-wrap text-nowrap">
+                <a href="{{url('/admin/messages/create')}}" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
+                    <i class="btn-icon-prepend" data-feather="plus"></i>
+                    Add message
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">Message</h6>
+                        <div class="table-responsive">
+                            <table id="dataTableExample" class="table">
+                                <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Message Body</th>
+                                    <th>Sent</th>
+                                    <th>Edit</th>
+                                    <th>View</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($messages as $message)
+                                    <tr>
+                                        <td>{{$message->subject}}</td>
+                                        <td>{!! $message->body !!}</td>
+                                        <td>sent to (0)</td>
+                                        <td><a href="{{url('/admin/messages/'.$message->id.'/edit')}}">Edit</a></td>
+                                        <td><a href="{{url('/admin/messages/'.$message->id)}}">View</a></td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+@stop
+
+@push('scripts')
+    <!-- Plugin js for this page -->
+    <script src="{{asset('/dashboard/vendors/datatables.net/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('/dashboard/vendors/datatables.net-bs5/dataTables.bootstrap5.js')}}"></script>
+    <!-- End plugin js for this page -->
+
+    <!-- Custom js for this page -->
+    <script src="{{asset('/dashboard/js/data-table.js')}}"></script>
+    <!-- End custom js for this page -->
+@endpush

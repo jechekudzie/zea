@@ -35,4 +35,9 @@ class MemberSubscription extends Model
     {
         return $this->belongsTo(MemberCategory::class);
     }
+
+    public function create_payment($payment)
+    {
+        return $this->payments()->create($payment);
+    }
 }

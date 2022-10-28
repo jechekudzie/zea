@@ -1,4 +1,4 @@
-<div class="d-none d-md-block col-md-4 col-xl-4 left-wrapper">
+<div class="d-none d-md-block col-md-3 col-xl-3 left-wrapper">
     <div class="card rounded">
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-2">

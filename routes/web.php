@@ -2,8 +2,10 @@
 /*header('Content-type: text/x-vcard');*/
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CheckAuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MemberBeneficiaryController;
 use App\Http\Controllers\MemberCategoryController;
 use App\Http\Controllers\MemberCategoryFeesController;
 use App\Http\Controllers\MemberContactController;
@@ -45,78 +47,8 @@ Route::get('/clear', function () {
 
 });
 
-Route::get('/certificate', function () {
+Route::get('/members/member_certificate/{memberSubscription}', [CertificateController::class, 'generate_certificate']);
 
-    $qr_code = QrCode::size(75)->generate('http://zea/1');
-    $html = '<img src="data:image/svg+xml;base64,' . base64_encode($qr_code) . '"  width="50" height="50" />';
-    $pdf = App::make('dompdf.wrapper');
-    $pdf->loadHTML(view('certificate')
-        ->with('html', $html))
-        ->setPaper('a5', 'portrait');
-    return $pdf->stream('Lineth2022.pdf');
-
-});
-
-Route::get('/qr', function () {
-
-    $firstName = 'John';
-    $lastName = 'Doe';
-    $title = 'Mr.';
-    $email = 'john.doe@example.com';
-
-    // Addresses
-    $homeAddress = [
-        'type' => 'home',
-        'pref' => true,
-        'street' => '123 my street st',
-        'city' => 'My Beautiful Town',
-        'state' => 'LV',
-        'country' => 'Neverland',
-        'zip' => '12345-678'
-    ];
-    $wordAddress = [
-        'type' => 'work',
-        'pref' => false,
-        'street' => '123 my work street st',
-        'city' => 'My Dreadful Town',
-        'state' => 'LV',
-        'country' => 'Hell',
-        'zip' => '12345-678'
-    ];
-
-    $addresses = [$homeAddress, $wordAddress];
-
-    // Phones
-    $workPhone = [
-        'type' => 'work',
-        'number' => '001 555-1234',
-        'cellPhone' => false
-    ];
-    $homePhone = [
-        'type' => 'home',
-        'number' => '001 555-4321',
-        'cellPhone' => false
-    ];
-    $cellPhone = [
-        'type' => 'work',
-        'number' => '001 9999-8888',
-        'cellPhone' => true
-    ];
-
-    $phones = [$workPhone, $homePhone, $cellPhone];
-
-    return QrCode::size(400)->encoding('UTF-8')->generate("BEGIN:VCARD\nVERSION:3.0\nN:Nandigolo; Nakambale\nURL:http://futureafricainternational.org/\nEMAIL:nandi@futureafricainternational.org\nTEL;TYPE=work,pref:+264813749396\nEND:VCARD");
-    /*$qr_code = QrCode::vCard($firstName, $lastName, $title, $email, $addresses, $phones);
-    $html = '<img src="data:image/svg+xml;base64,' . base64_encode($qr_code) . '"  width="100" height="100" />';
-
-    echo $html;*/
-});
-
-Route::get('/check', function () {
-
-    return view('mail.message');
-
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -157,7 +89,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/admin/subscribers', SubscriberController::class);
 
 
-
         Route::resource('/admin/messages', MessageController::class);
 
         Route::post('/admin/{role}/role_permissions', [RolePermissionsController::class, 'store']);
@@ -181,7 +112,7 @@ Route::post('/send_email', [ContactController::class, 'store'])->name('send_emai
 */
 Route::get('/check_user', [CheckAuthController::class, 'user_has_member_account']);
 Route::resource('/members', MemberController::class);
-Route::get('/members/institution/create', [MemberController::class,'create_institution']);
+Route::get('/members/institution/create', [MemberController::class, 'create_institution']);
 Route::resource('/members/subscriptions', MemberSubscriptionController::class);
 Route::get('/members/contact', [MemberContactController::class, 'index']);
 Route::get('/members/contact/{member}/create', [MemberContactController::class, 'create']);
@@ -203,12 +134,23 @@ Route::delete('/members/employment/{member_employment}/destroy', [MemberEmployme
 
 Route::get('/members/subscriptions', [MemberSubscriptionController::class, 'index']);
 Route::get('/members/subscriptions/{member}/create', [MemberSubscriptionController::class, 'create']);
-Route::post('/members/subscriptions/{member}/store', [MemberSubscriptionController::class, 'store']);
+Route::post('/members/subscriptions/{member}/payment_details', [MemberSubscriptionController::class, 'payment_details']);
+Route::post('/members/subscriptions/{member}/submit_payment_details', [MemberSubscriptionController::class, 'submit_payment_details']);
+Route::get('/members/subscriptions/{memberSubscription}/show', [MemberSubscriptionController::class, 'show']);
+Route::post('/members/subscriptions/{memberSubscription}/verify_subscription', [MemberSubscriptionController::class, 'verify_subscription']);
+
+Route::get('/members/institution_members', [MemberBeneficiaryController::class, 'index']);
+Route::get('/members/institution_members/{member}/create', [MemberBeneficiaryController::class, 'create']);
+Route::post('/members/institution_members/{member}/add_member', [MemberBeneficiaryController::class, 'add_member']);
+Route::post('/members/institution_members/{member}/send_invite', [MemberBeneficiaryController::class, 'send_invite']);
+
+Route::post('/members/subscriptions/{member}/paynow', [MemberSubscriptionController::class, 'paynow']);
+Route::get('/members/subscriptions/{member_subscription}/check_payment', [MemberSubscriptionController::class, 'check_payment']);
+
 Route::get('/members/subscriptions/{member_subscription}/show', [MemberSubscriptionController::class, 'show']);
 Route::get('/members/subscriptions/{member_subscription}/edit', [MemberSubscriptionController::class, 'edit']);
 Route::patch('/members/subscriptions/{member_subscription}/update', [MemberSubscriptionController::class, 'update']);
 Route::delete('/members/subscriptions/{member_subscription}/destroy', [MemberSubscriptionController::class, 'destroy']);
-Route::get('/members/subscriptions/{member_subscription}/check_payment', [MemberSubscriptionController::class, 'check_payment']);
 
 
 Route::get('/dashboard', function () {

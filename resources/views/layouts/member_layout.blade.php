@@ -10,7 +10,7 @@
     <meta name="keywords"
           content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-    <title>ZEA - Admin</title>
+    <title>ZEA - Member</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +35,7 @@
 
     <link rel="shortcut icon" href="{{asset('dashboard/images/favicon.png')}}"/>
 
-
+    @livewireStyles
 </head>
 <body>
 <div class="main-wrapper">
@@ -274,14 +274,25 @@
     <div class="page-wrapper">
 
         <div class="page-content">
+            @if($errors->any())
+                @include('errors')
+            @endif
 
+            @if (session('message'))
+                <div class="alert alert-primary dark alert-dismissible fade show" role="alert">
+                    <strong>Message
+                        ! </strong> {{session('message')}}
+                    <button class="btn-close" type="button" data-bs-dismiss="alert"
+                            aria-label="Close"></button>
+                </div>
+            @endif
             <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
                 @include('layouts.member_basic')
                 <div class="d-flex align-items-center flex-wrap text-nowrap">
-                    <a href="{{url('/members/subscriptions/'.$member->id.'/create')}}"
+                    <a href="{{url('/members/'.$member->id)}}"
                        class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
-                        <i class="btn-icon-prepend" data-feather="plus"></i>
-                        Subscribe
+                        <i class="btn-icon-prepend" data-feather="home"></i>
+                        Dashboard Home
                     </a>
                 </div>
             </div>
@@ -291,18 +302,6 @@
             @include('layouts.member_side_bar')
             <!-- left wrapper end -->
                 <!-- middle wrapper start -->
-                @if($errors->any())
-                    @include('errors')
-                @endif
-
-                @if (session('message'))
-                    <div class="alert alert-primary dark alert-dismissible fade show" role="alert">
-                        <strong>Message
-                            ! </strong> {{session('message')}}
-                        <button class="btn-close" type="button" data-bs-dismiss="alert"
-                                aria-label="Close"></button>
-                    </div>
-                @endif
 
                 @yield('content')
             </div>
@@ -338,7 +337,7 @@
 <script src="{{asset('dashboard/js/dashboard-light.js')}}"></script>
 
 <!-- End custom js for this page -->
-
+@livewireScripts
 </body>
 </html>
 
