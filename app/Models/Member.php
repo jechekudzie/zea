@@ -53,7 +53,7 @@ class Member extends Model
 
     public function user_member()
     {
-        return $this->$this->hasOne(UserMember::class);
+        return $this->hasOne(UserMember::class);
     }
 
     public function member_beneficiaries()

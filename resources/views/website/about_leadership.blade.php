@@ -44,8 +44,141 @@
           </div>
         </div>
       </section>-->
+      
+        <!--<section class="">
+                <div class="container">
+                  <div class="section-content">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-6 col-xl-6">
+                        <h6 class="letter-space-4 text-gray-darkgray text-uppercase mt-0 mb-0">All About</h6>
+                        <h2 class="text-uppercase mt-0 line-bottom line-bottom-theme-colored1">THE ZEA CONSTITUENCY</h2>
+
+                        <p>ZEA identifies its constituency as consisting of all stakeholders in evaluation. For planning purposes and to ensure the Association continuously develops and meets the needs of its varied stakeholders, the stakeholders are clustered into four groups. These are Evaluators, Evaluation Clients, Learning and Practice Partners, and the General Public. Actors/Agencies can take on different at different points in time or take on multiple roles simultaneously</p>
+                        <!--<a href="#" class="btn btn-sm btn-theme-colored2 text-white mb-md-40">Know more</a>-->
+                      <!--</div>
+                      <div class="col-md-12 col-lg-6 col-xl-6">
+                        <div class="box-hover-effect tm-sc-video-popup tm-sc-video-popup-button-over-image h-100">
+                          <div class="effect-wrapper h-100">
+                            <div class="thumb h-100">
+                              <img class="w-100 h-100" src="{{asset('/banner.jpg')}}" alt="">
+                            </div>
+                            <!--<div class="animated-css-play-button"><span class="play-icon"><i class="fa fa-play"></i></span></div>-->
+                            <!--<a class="hover-link" data-lightbox-gallery="youtube-video" img src="{{asset('/banner.jpg')}}" title=""></a>-->
+                          <!--</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>-->
+            <!--</div>-->
+
+
+              <!-- member staff -->
+
+              <section>
+                <div class="container">
+                  <div class="section-title">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <div class="mb-60">
+                          <div class="tm-sc tm-sc-section-title section-title">
+                            <div class="title-wrapper">
+                              <h2 class="text-uppercase line-bottom line-bottom-theme-colored1">Our <span class="text-theme-colored1">Board Members</span></h2>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="section-content">
+                    <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 h-100">
+                                <div class="staff-item mb-lg-40">
+                                <div class="staff-thumb"> <img style="width:350px;height: 350px;" alt="img" src="{{ asset('/Shylock.jpg') }}" class="w-100">
+                                </div>
+                                <div class="staff-content">
+                                    <h4 class="staff-name text-theme-colored1 mt-0">Shylock Muyengwa - <small>President</small></h4>
+                                    <p class="mb-20"> PhD
+                                        Managing Consultant | Center for Impact Evaluation
+                                        Southern Africa Regional Representative to the African Evaluation Association</p>
+                                    <!--<div class="staff-social-part">
+                                    <ul class="styled-icons icon-dark icon-theme-colored2 icon-sm icon-circled float-start mt-10">
+                                        <li><a class="social-link" href="#"><i class="fab fa-facebook"></i></a></li>
+                                        <li><a class="social-link" href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a class="social-link" href="#"><i class="fab fa-youtube"></i></a></li>
+                                    </ul>
+                                    <a class="btn btn-theme-colored2 btn-xs p-10 float-end" href="#">view details</a>
+                                    </div>-->
+                                </div>
+                                </div>
+                            </div>
+                            
+                            
+                             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 h-100">
+                                <div class="staff-item mb-lg-40">
+                                <div class="staff-thumb"> <img style="width:350px;height: 350px;" alt="img" src="{{ asset('/cynthia.JPG') }}" class="w-100">
+                                </div>
+                                <div class="staff-content">
+                                    <h4 class="staff-name text-theme-colored1 mt-0">Cynthia Pilile Mawema - <small> Vice-President</small></h4>
+                                    <p class="mb-20"> Development Assistance practitioner 
+                                        has worked across Botswana and Zimbabwe with
+                                       UNICEF Botswana, UNICEF Tanzania, UNICEF Denmark and SADC</p>
+                                    <!--<div class="staff-social-part">
+                                    <ul class="styled-icons icon-dark icon-theme-colored2 icon-sm icon-circled float-start mt-10">
+                                        <li><a class="social-link" href="#"><i class="fab fa-facebook"></i></a></li>
+                                        <li><a class="social-link" href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a class="social-link" href="#"><i class="fab fa-youtube"></i></a></li>
+                                    </ul>
+                                    <a class="btn btn-theme-colored2 btn-xs p-10 float-end" href="#">view details</a>
+                                    </div>-->
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 h-100">
+                                <div class="staff-item mb-lg-40">
+                                <div class="staff-thumb"> <img style="width:350px;height: 350px;" alt="img" src="{{asset('/profpic.jpg')}}" class="w-100">
+                                </div>
+                                <div class="staff-content">
+                                    <h4 class="staff-name text-theme-colored1 mt-0">Patrick Mpedzisi - <small>Secretary General</small></h4>
+                                    <p class="mb-20"> African Peer Review Mechanism, Pan African Parliament. He is a co-founder of Nahari Africa and founder of Mitupo.org.</p>
+                                    <!--<div class="staff-social-part">
+                                    <ul class="styled-icons icon-dark icon-theme-colored2 icon-sm icon-circled float-start mt-10">
+                                        <li><a class="social-link" href="#"><i class="fab fa-facebook"></i></a></li>
+                                        <li><a class="social-link" href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a class="social-link" href="#"><i class="fab fa-youtube"></i></a></li>
+                                    </ul>
+                                    <a class="btn btn-theme-colored2 btn-xs p-10 float-end" href="#">view details</a>
+                                    </div>-->
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 h-100">
+                                <div class="staff-item mb-lg-40">
+                                <div class="staff-thumb"> <img style="width:350px;height: 350px;" alt="img" src="{{asset('/Roy.JPG')}}" class="w-100">
+                                </div>
+                                <div class="staff-content">
+                                    <h4 class="staff-name text-theme-colored1 mt-0">Roy Mutandwa - <small>Board Member</small></h4>
+                                    <p class="mb-20">International Evaluation Specialist,with experience in conducting evaluations in in Zimbabwe, Yemen, South Africa, South Sudan</p>
+                                    <!--<div class="staff-social-part">
+                                    <ul class="styled-icons icon-dark icon-theme-colored2 icon-sm icon-circled float-start mt-10">
+                                        <li><a class="social-link" href="#"><i class="fab fa-facebook"></i></a></li>
+                                        <li><a class="social-link" href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a class="social-link" href="#"><i class="fab fa-youtube"></i></a></li>
+                                    </ul>
+                                    <a class="btn btn-theme-colored2 btn-xs p-10 float-end" href="#">view details</a>
+                                    </div>-->
+                                </div>
+                                </div>
+                            </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
     <section>
-        <div class="container pt-10 pb-10">
+        <!--<div class="container pt-10 pb-10">
           <div class="section-content">
             <div class="row">
               <div class="col-md-12 pt-10">
@@ -60,7 +193,7 @@
                   </li>
                   <!--<li class="nav-item">
                     <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
-                  </li>-->
+                  </li>
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
                   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -79,7 +212,7 @@
                   </div>
                   <!--<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-                  </div>-->
+                  </div>
                 </div>
               </div>
             </div>
@@ -134,7 +267,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section>-->
 
 
   </div>

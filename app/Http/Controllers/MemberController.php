@@ -6,7 +6,9 @@ use App\Models\City;
 use App\Models\Gender;
 use App\Models\IdentificationType;
 use App\Models\Member;
+use App\Models\MemberBeneficiary;
 use App\Models\MemberCategory;
+use App\Models\Payment;
 use App\Models\Province;
 use App\Models\Title;
 use App\Models\UserMember;
@@ -57,9 +59,9 @@ class MemberController extends Controller
             $member_category_id = $user->member_category_id;
             if (strtolower($user->member_category->name) == 'student' || strtolower($user->member_category->name) == 'individual') {
                 $member = Member::create(request()->validate([
-                    'title_id' => ['required'],
-                    'gender_id' => ['required'],
-                    'dob' => ['required'],
+                    'title_id' => ['nullable'],
+                    'gender_id' => ['nullable'],
+                    'dob' => ['nullable'],
                     'identification_type_id' => ['required'],
                     'identification' => ['required'],
                     'name' => ['required', 'min:3'],
@@ -125,6 +127,15 @@ class MemberController extends Controller
         return view('members.show', compact('member'));
     }
 
+    public function upgrade_downgrade_membership(Member $member)
+    {
+       $member->update(request()->validate([
+            'member_category_id' => 'required'
+        ]));
+
+       return back()->with('message','Member category upgrade/downgraded.');
+    }
+
     public function edit(Member $member)
     {
         $member_categories = MemberCategory::all();
@@ -145,16 +156,29 @@ class MemberController extends Controller
 
     public function destroy(Member $member)
     {
-        if ($member->member_contact()) {
+        if ($member->member_contact) {
             $member->member_contact->delete();
         }
         if ($member->member_employment) {
             $member->member_employment->delete();
         }
 
-        if ($member->member_subscriptions()) {
-            $member->member_subscriptions->delete();
+        if ($member->member_subscriptions->count() > 0) {
+
+            foreach ($member->member_subscriptions as $member_subscription) {
+                if ($member_subscription->payments->count() > 0) {
+                    $payments = Payment::where('member_subscription_id', $member_subscription->id)->delete();
+                }
+                $member_subscription->delete();
+            }
         }
+
+        $member_beneficiary = MemberBeneficiary::where('beneficiary', $member->id)->first();
+        if ($member_beneficiary != null) {
+            $member_beneficiary->delete();
+        }
+
+        $member->delete();
         return redirect('/members');
     }
 }

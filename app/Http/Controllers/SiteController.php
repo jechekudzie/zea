@@ -23,7 +23,9 @@ class SiteController extends Controller
 
     public function member_categories()
     {
-        return view('website.membership.member_categories');
+        $member_categories = MemberCategory::all();
+       
+        return view('website.membership.member_categories', compact('member_categories'));
     }
     public function about_our_history()
     {

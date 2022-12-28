@@ -52,11 +52,25 @@
         <form method="post" action="{{url('/admin/messages')}}" enctype="multipart/form-data">
             @csrf
             <div class="row">
+                <div class="col-md-6 col-lg-6 mb-3">
+                    <label for="categorySelect" class="form-label">Membership category</label>
+                    <select class="form-select" name="group" id="categorySelect">
+                        <option value="">Choose Message Group</option>
+                        <option value="subscribers">Subscribers</option>
+                        <option value="members">ZEA Members Only</option>
 
+                    </select>
+                </div>
                 <div class="col-md-12 col-lg-12 mb-3">
                     <label for="name" class="form-label">Subject </label>
                     <input id="name" class="form-control" name="subject" type="text">
                 </div>
+
+                <div class="col-md-12 col-lg-12 mb-3">
+                    <label for="name" class="form-label">File(s) </label>
+                    <input id="name" class="form-control" name="file" type="file">
+                </div>
+
                 <div class="col-md-12 col-lg-12 mb-3">
                     <label for="name" class="form-label">Message Body</label>
                     <textarea class="form-control editor" name="body"></textarea>

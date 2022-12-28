@@ -23,6 +23,15 @@
             <div class="mt-3">
                 <label class="tx-11 fw-bolder mb-0 text-uppercase">Member Category:</label>
                 <p class="text-muted">{{$member->member_category->name}}</p>
+
+                @role('Admin')
+                <a href="#" data-bs-toggle="modal"
+                   data-bs-target="#exampleModal{{$member->id}}">
+                    Upgrade membership
+                </a>
+                @endrole
+
+
             </div>
             <div class="mt-3">
                 <label
@@ -47,6 +56,43 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="exampleModal{{$member->id}}" tabindex="-1"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form method="post" action="{{url('/members/'.$member->id.'/upgrade_downgrade_membership')}}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">UPGRADE MEMBERSHIP</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to upgrade/downgrade this member?</p>
+
+                        <div class="col-md-6 col-lg-6 mb-3">
+                            <select class="form-select" name="member_category_id" id="categorySelect">
+                                <option value="">Choose Category</option>
+                                @foreach(\App\Models\MemberCategory::all() as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Upgrade/Downgrade</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            No
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
     <div class="card rounded">
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-2">

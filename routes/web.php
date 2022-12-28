@@ -72,11 +72,7 @@ Route::get('subscribers/index', [SubscriberController::class, 'index']);
 |Administration dashboard
 |--------------------------------------------------------------------------
 */
-
-Route::resource('/admin/users', UsersController::class);
-Route::resource('/admin/roles', RolesController::class);
-Route::resource('/admin/permissions', PermissionsController::class);
-Route::resource('/admin/rate', RateController::class);
+Route::resource('/admin/subscribers', SubscriberController::class);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['role:Admin']], function () {
@@ -86,15 +82,16 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::resource('/admin/member_categories', MemberCategoryController::class);
 
-        Route::resource('/admin/subscribers', SubscriberController::class);
-
-
         Route::resource('/admin/messages', MessageController::class);
 
         Route::post('/admin/{role}/role_permissions', [RolePermissionsController::class, 'store']);
 
         Route::resource('/admin/subscriptions', 'Admin\SubscriptionsController');
 
+        Route::resource('/admin/users', UsersController::class);
+        Route::resource('/admin/roles', RolesController::class);
+        Route::resource('/admin/permissions', PermissionsController::class);
+        Route::resource('/admin/rate', RateController::class);
     });
 });
 
@@ -112,6 +109,8 @@ Route::post('/send_email', [ContactController::class, 'store'])->name('send_emai
 */
 Route::get('/check_user', [CheckAuthController::class, 'user_has_member_account']);
 Route::resource('/members', MemberController::class);
+Route::post('/members/{member}/upgrade_downgrade_membership', [MemberController::class,'upgrade_downgrade_membership']);
+
 Route::get('/members/institution/create', [MemberController::class, 'create_institution']);
 Route::resource('/members/subscriptions', MemberSubscriptionController::class);
 Route::get('/members/contact', [MemberContactController::class, 'index']);

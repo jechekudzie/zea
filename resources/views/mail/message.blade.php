@@ -253,7 +253,7 @@
                                                 <div class="editable_text" style="line-height: 34px">
                                     <span class="text_container">
                                     <multiline>
-                                      {{$message->subject}}
+                                      {{$message['subject']}}
                                     </multiline>
                                     </span>
                                                 </div>
@@ -270,7 +270,7 @@
                                                 <div class="editable_text" style="line-height: 26px">
                                   <span class="text_container">
                                     <multiline>
-                                {!! $message->body !!}
+                                {!! $message['body'] !!}
                                     </multiline>
                                   </span>
                                                 </div>

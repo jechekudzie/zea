@@ -40,7 +40,7 @@
                             <div class="col-md-6 col-lg-6 mb-3 ">
                                 <label for="name" class="form-label">Amount paid</label>
                                 <input type="text" class="form-control" name="amount_paid"
-                                       value="">
+                                       value="{{$payment_details['amount_invoiced']}}" readonly>
                             </div>
                             <div class="col-md-6 col-lg-6 mb-3 ">
                                 <label for="name" class="form-label">Currency</label>
@@ -76,7 +76,7 @@
                             <div class="col-md-6 col-lg-6 mb-3 ">
                                 <label for="name" class="form-label">Amount paid</label>
                                 <input type="text" class="form-control" name="amount_paid"
-                                       value="">
+                                       value="{{$payment_details['amount_invoiced']}}" readonly>
                             </div>
                             <div class="col-md-6 col-lg-6 mb-3 ">
                                 <label for="name" class="form-label">Currency</label>
@@ -124,7 +124,7 @@
                             <div class="col-md-6 col-lg-6 mb-3 ">
                                 <label for="name" class="form-label">Amount paid</label>
                                 <input type="text" class="form-control" name="amount_paid"
-                                       value="">
+                                       value="{{$payment_details['amount_invoiced']}}" readonly>
                             </div>
                             <div class="col-md-6 col-lg-6 mb-3 ">
                                 <label for="name" class="form-label">Currency</label>

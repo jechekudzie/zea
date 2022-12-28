@@ -20,10 +20,10 @@
                            aria-controls="profile" aria-selected="false">Institutional members</a>
                     </li>
                 @endif
-                <li class="nav-item">
+               {{-- <li class="nav-item">
                     <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab"
                        aria-controls="contact" aria-selected="false">Payments</a>
-                </li>
+                </li>--}}
 
             </ul>
             <div class="tab-content mt-3" id="lineTabContent">
@@ -132,6 +132,7 @@
                     D
                 </div>
             </div>
+
         </div>
     </div>
 

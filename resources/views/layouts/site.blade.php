@@ -68,14 +68,14 @@
                     <div class="col-xl-auto header-top-left align-self-center text-center text-xl-start">
                         <ul class="element contact-info">
                             <li class="contact-phone"><i class="fa fa-phone font-icon sm-display-block"></i> Tel:
-                                +263 779 970 322 | +2263 779 970 322
+                                +263 779 970 322 | +263  778 499 791
                             </li>
                             <li class="contact-email"><i class="fa fa-envelope font-icon sm-display-block"></i>
                                 admin@zimevalassoc.org
                             </li>
-                            <li class="contact-address"><i class="fa fa-map font-icon sm-display-block"></i>
+                            <!--<li class="contact-address"><i class="fa fa-map font-icon sm-display-block"></i>
 
-                            </li>
+                            </li>-->
                         </ul>
                     </div>
                     <div class="col-xl-auto ms-xl-auto header-top-right align-self-center text-center text-xl-end">
@@ -113,14 +113,14 @@
                                         <li class="menu-item"><a href="#">About Us</a>
                                             <ul class="dropdown">
                                                 <li><a href="{{url('/about_leadership')}}">Leadership</a></li>
-                                                <li><a href="{{url('/about_our_history')}}">Our History</a></li>
+                                                <!--<li><a href="{{url('/about_our_history')}}">Our History</a></li>-->
                                             </ul>
                                         </li>
                                         <li class="menu-item"><a href="#">Membership</a>
                                             <ul class="dropdown">
                                                 <li><a href="{{url('/member_categories')}}">Member Categories</a></li>
                                                 <li><a href="{{url('/member_benefits')}}">Member Benefits</a></li>
-                                                <li><a href="{{url('/member_directories')}}">Member Directories</a></li>
+                                                <!--<li><a href="{{url('/member_directories')}}">Member Directories</a></li>-->
                                                 <li><a href="{{url('/chapters')}}">Chapters</a></li>
                                                 <li><a href="{{url('/register')}}">Become a member</a></li>
                                             </ul>

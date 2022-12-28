@@ -7,9 +7,13 @@ use App\Models\MemberSubscription;
 use App\Models\Payment;
 use App\Models\PaymentMethod;
 use App\Models\Rate;
+use App\Models\User;
+use App\Notifications\Paymentupdate;
+use App\Notifications\SubscriptionVerified;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Paynow\Payments\Paynow;
+use Spatie\Permission\Models\Role;
 
 class MemberSubscriptionController extends Controller
 {
@@ -116,27 +120,7 @@ class MemberSubscriptionController extends Controller
             $compliance_status = 2;
             $payment_status_id = 2;
         }
-        if ($member->member_subscriptions->count() > 0) {
-
-            $last_subscription = $member->member_subscriptions->last();
-            $last_subscription_expiry_date = $last_subscription->expiry_date;
-
-            if ($last_subscription_expiry_date < date('Y-m-d')) {
-                $start_date = date('Y-m-d');
-                $expiry_date = Date('Y-m-d', strtotime('+' . 365 . ' days'));
-                $member_subscription = $this->create_subscription($member->id, $member->member_category_id, $compliance_status, $start_date, $expiry_date);
-
-            } else {
-                $start_date = $last_subscription_expiry_date;
-                $expiry_date = date('Y-m-d', strtotime($start_date . ' + 365 days'));
-                $member_subscription = $this->create_subscription($member->id, $member->member_category_id, $compliance_status, $start_date, $expiry_date);
-
-            }
-        } else {
-            $start_date = Date('Y-m-d');
-            $expiry_date = Date('Y-m-d', strtotime('+' . 365 . ' days'));
-            $member_subscription = $this->create_subscription($member->id, $member->member_category_id, $compliance_status, $start_date, $expiry_date);
-        }
+        $member_subscription = $this->check_subs_existence($member, $compliance_status);
 
         $member_subscription_payment = $member_subscription->create_payment([
             'period' => date('Y'),
@@ -152,7 +136,58 @@ class MemberSubscriptionController extends Controller
             'proof_of_payment' => $proof_of_payment,
         ]);
 
+        if (strtolower($member_subscription->member->member_category->name) == 'institution') {
+
+            if ($member->member_beneficiaries->count() > 0) {
+
+                foreach ($member->member_beneficiaries as $beneficiary_member) {
+
+                    $institutional_member = Member::find($beneficiary_member->beneficiary);
+                    $member_subscription = $this->check_subs_existence($institutional_member, 3);
+                }
+            }
+        }
+
+        $admin_user = User::role('Admin')->first();
+
+        $admin_user->notify(new Paymentupdate($member_subscription));
+
+
         return redirect('members/' . $member->id)->with('message', 'Subscription is now active and your payment was successful.');
+    }
+
+    public function check_subs_existence($member, $compliance_status)
+    {
+        if ($member->member_subscriptions) {
+            if ($member->member_subscriptions->count() > 0) {
+
+                $last_subscription = $member->member_subscriptions->last();
+                $last_subscription_expiry_date = $last_subscription->expiry_date;
+
+                if ($last_subscription_expiry_date < date('Y-m-d')) {
+                    $start_date = date('Y-m-d');
+                    $expiry_date = Date('Y-m-d', strtotime('+' . 365 . ' days'));
+                    $member_subscription = $this->create_subscription($member->id, $member->member_category_id, $compliance_status, $start_date, $expiry_date);
+
+                } else {
+                    $start_date = $last_subscription_expiry_date;
+                    $expiry_date = date('Y-m-d', strtotime($start_date . ' + 365 days'));
+                    $member_subscription = $this->create_subscription($member->id, $member->member_category_id, $compliance_status, $start_date, $expiry_date);
+
+                }
+            } else {
+                $start_date = Date('Y-m-d');
+                $expiry_date = Date('Y-m-d', strtotime('+' . 365 . ' days'));
+                $member_subscription = $this->create_subscription($member->id, $member->member_category_id, $compliance_status, $start_date, $expiry_date);
+            }
+
+        } else {
+            $start_date = Date('Y-m-d');
+            $expiry_date = Date('Y-m-d', strtotime('+' . 365 . ' days'));
+            $member_subscription = $this->create_subscription($member->id, $member->member_category_id, $compliance_status, $start_date, $expiry_date);
+
+        }
+        return $member_subscription;
     }
 
     public function create_subscription($member, $member_category, $compliance_status, $start_date, $expiry_date)
@@ -206,7 +241,7 @@ class MemberSubscriptionController extends Controller
             'http://localhost:8000/members/subscriptions/' . $member_subscription->id . '/check_payment'
         );
         //create a payment and add items required
-        $paynow_payment = $paynow->createPayment($id, 'nigel@leadingdigital.africa');
+        $paynow_payment = $paynow->createPayment($id, 'admin@zimevalassoc.org');
         $paynow_payment->add('Subscription', $subscription['amount_invoiced']);
         //initiate payment
         $response = $paynow->send($paynow_payment);
@@ -291,14 +326,51 @@ class MemberSubscriptionController extends Controller
     {
         $member = $memberSubscription->member;
         $memberSubscription->update([
-
             'compliance_status_id' => 1
         ]);
+
+        $user = $member->user_member->user;
+
+        if (strtolower($member->member_category->name) == 'institution') {
+            if ($member->member_beneficiaries) {
+                if ($member->member_beneficiaries->count() > 0) {
+
+                    foreach ($member->member_beneficiaries as $member_beneficiary) {
+
+                        $institutional_member = Member::find($member_beneficiary->beneficiary);
+
+                        if ($institutional_member->member_subscriptions) {
+                            if ($institutional_member->member_subscriptions->count() > 0) {
+                                $last_institution_member_sub = $institutional_member->member_subscriptions->last();
+                                $last_institution_member_sub->update([
+                                    'compliance_status_id' => 1
+                                ]);
+
+                                $institutional_user = $institutional_member->user_member->user;
+                                $institutional_user->notify(new SubscriptionVerified($last_institution_member_sub));
+
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+        $user->notify(new SubscriptionVerified($memberSubscription));
+
         return redirect('/members/' . $member->id)->with('message', 'The Subscription starting
-        ' . date('Y-m-d', strtotime($memberSubscription->start_date)).' has been succesfuly verified'
+        ' . date('Y-m-d', strtotime($memberSubscription->start_date)) . ' has been successfully verified'
         );
         //notification comes here
     }
 
+    public function destroy(MemberSubscription $memberSubscription)
+    {
+        $member = $memberSubscription->member;
+        $memberSubscription->delete();
+
+        return redirect('/members/'.$member->id);
+    }
 
 }

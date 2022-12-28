@@ -45,6 +45,22 @@ class MemberBeneficiaryController extends Controller
 
                         ]));
 
+                        //check if beneficiary have an active subscription or not
+                        if ($member->member_subscriptions->count() > 0) {
+                            $last_institution_subscription = $member->member_subscriptions->last();
+
+                            if ($last_institution_subscription->expiry_date > date('Y-m-d')) {
+
+                                if($last_institution_subscription->compliance_status_id == 3){
+                                    $compliance_status = 3;
+                                }else{
+                                    $compliance_status = 1;
+                                }
+                                $subs = app('App\Http\Controllers\MemberSubscriptionController')->check_subs_existence($beneficiary_to_be_added, $compliance_status);
+                            }
+
+                        }
+
                         try {
                             Mail::to($beneficiary_to_be_added->member_contact->contact_email)->send(new \App\Mail\InstitutionalMemberAdded($member, $beneficiary_to_be_added));
                         } catch (\Exception $exception) {

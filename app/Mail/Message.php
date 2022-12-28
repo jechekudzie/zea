@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class Message extends Mailable implements ShouldQueue
+class Message extends Mailable /*implements ShouldQueue*/
 {
     use Queueable, SerializesModels;
 
@@ -17,13 +17,14 @@ class Message extends Mailable implements ShouldQueue
      * @return void
      */
 
-    public $message,$subscriber_id;
+    public $message, $subscriber_id, $path;
 
-    public function __construct($message,$subscriber_id)
+    public function __construct($message, $subscriber_id, $path)
     {
         //
         $this->message = $message;
         $this->subscriber_id = $subscriber_id;
+        $this->path = $path;
     }
 
     /**
@@ -33,6 +34,7 @@ class Message extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->markdown('mail.message');
+        return $this->attach($this->path)
+            ->markdown('mail.message');
     }
 }

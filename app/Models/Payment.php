@@ -30,4 +30,6 @@ class Payment extends Model
     {
         return $this->belongsTo(PaymentStatus::class);
     }
+
+
 }

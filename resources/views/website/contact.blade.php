@@ -88,7 +88,7 @@
                 <div class="row">
                     <div class="col-lg-7">
                         <h2 class="mt-0 mb-0">Interested in discussing?</h2>
-                        <p class="font-size-20">Active & Ready to use Contact Form!</p>
+                        <!--<p class="font-size-20">Active & Ready to use Contact Form!</p>-->
                         <!-- Contact Form -->
                         @if($errors->any())
                             @include('errors')

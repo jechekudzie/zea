@@ -62,12 +62,23 @@
                         </tbody>
                     </table>
 
+                    @if(strtolower($memberSubscription->compliance_status->name) == 'compliant')
+
+                        <div style="padding: 15px;" class="row">
+                            <div class="col-md-12 col-lg-12 ">
+                                <a href="{{url('/members/member_certificate/'.$memberSubscription->id)}}"
+                                   class="btn btn-danger">Download Certificate </a>
+                            </div>
+                        </div>
+                    @endif
+
 
                 </div>
 
             </div>
-            @role('Admin')
+
             <div style="margin: 10px;" class="card">
+                @role('Admin')
                 <form style="margin: 15px;" method="post"
                       action="{{url('/members/subscriptions/'.$memberSubscription->id.'/verify_subscription')}}"
                       enctype="multipart/form-data">
@@ -80,8 +91,9 @@
                         </div>
                     </div>
                 </form>
+                @endrole
             </div>
-            @endrole
+
 
 
         </div>

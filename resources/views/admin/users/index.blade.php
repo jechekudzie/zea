@@ -60,7 +60,14 @@
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->name}}</td>
                                             <td>@if($user->roles){{$user->getRoleNames()->first()}}@endif</td>
-                                            <td>@if($user->user_member){{$user->user_member->member->member_category->name}}@endif</td>
+                                            <td>@if($user->user_member)
+                                                    @if($user->user_member->member)
+                                                        {{$user->user_member->member->member_category->name}}
+                                                    @else
+                                                        {{'System User'}}
+                                                    @endif
+
+                                                @endif</td>
                                             <td>
                                                 <a href="{{url('admin/users/'.$user->id.'/edit')}}">Edit</a>
                                             </td>
@@ -95,12 +102,14 @@
 
                                         <div class="mb-3">
                                             <label for="colFormLabel" class="form-label">Name</label>
-                                            <input name="name" type="text" class="form-control" value="{{old('name')}}" id="colFormLabel">
+                                            <input name="name" type="text" class="form-control" value="{{old('name')}}"
+                                                   id="colFormLabel">
                                         </div>
 
                                         <div class="mb-3">
                                             <label for="colFormLabel" class="form-label">Email</label>
-                                            <input name="email" type="email" class="form-control" value="{{old('email')}}" id="colFormLabel">
+                                            <input name="email" type="email" class="form-control"
+                                                   value="{{old('email')}}" id="colFormLabel">
                                         </div>
 
                                         <div class=" col-md-6 mb-3">
@@ -110,22 +119,24 @@
                                                     id="exampleFormControlSelect1">
                                                 <option selected disabled>Select User Role</option>
 
-                                                    @foreach($roles as $role)
-                                                        <option
-                                                            value="{{$role->name}}">{{$role->name}}</option>
-                                                    @endforeach
+                                                @foreach($roles as $role)
+                                                    <option
+                                                        value="{{$role->name}}">{{$role->name}}</option>
+                                                @endforeach
 
                                             </select>
                                         </div>
 
                                         <div class="mb-3">
                                             <label for="colFormLabel" class="form-label">Password</label>
-                                            <input name="password" type="password" class="form-control"  id="colFormLabel">
+                                            <input name="password" type="password" class="form-control"
+                                                   id="colFormLabel">
                                         </div>
 
                                         <div class="mb-3">
                                             <label for="colFormLabel" class="form-label">Confirm Password</label>
-                                            <input name="password_confirmation" type="password" class="form-control" id="colFormLabel">
+                                            <input name="password_confirmation" type="password" class="form-control"
+                                                   id="colFormLabel">
                                         </div>
 
                                     </div>

@@ -37,7 +37,7 @@ class ContactController extends Controller
 
         try {
 
-            Mail::to('nigel@leadingdigital.africa')->send(new ContactMail($contact));
+            Mail::to('admin@zimevalassoc.org')->send(new ContactMail($contact));
             return back()->with('message', 'Thank you for contact us. we will contact you shortly.');
 
         } catch (\Exception $exception) {

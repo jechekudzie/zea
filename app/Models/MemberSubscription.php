@@ -40,4 +40,5 @@ class MemberSubscription extends Model
     {
         return $this->payments()->create($payment);
     }
+
 }

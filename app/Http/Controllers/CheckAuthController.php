@@ -21,7 +21,6 @@ class CheckAuthController extends Controller
             }
         }
 
-
         if ($user->roles) {
             if ($user->hasRole('Member')) {
 

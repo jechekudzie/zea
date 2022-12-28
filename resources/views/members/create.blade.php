@@ -182,17 +182,6 @@
                                                 <input id="name" class="form-control" name="qualification" type="text">
                                             </div>
 
-                                            <div class="col-md-6 col-lg-6 mb-3 ">
-                                                <label for="name" class="form-label">Start Date</label>
-                                                <input id="datePickerExample" class="form-control datepicker"
-                                                       name="start_date" type="text">
-                                            </div>
-                                            <div class="col-md-6 col-lg-6 mb-3 ">
-                                                <label for="name" class="form-label">End Date</label>
-                                                <input id="datePickerExample" class="form-control datepicker"
-                                                       name="end_date" type="text">
-                                            </div>
-
                                         </div>
                                     </section>
                                 @endif
