@@ -71,16 +71,17 @@
                             			 <div class="col-md-12">
                             			    <h6>Banking Details</h6>
                             					<div class="tm-sc-unordered-list list-style-square mt-10 mb-30">
+                                                    <h6>Account name: Zimbabwe Evaluation Association</h6>
                             					  <ul>
-                            						<li><span class="font-weight-600 text-black-222">Account Name: </span>Zimbabwe Evaluation Associaton</li>
-                            						<li><span class="font-weight-600 text-black-222">Account Number USD FCA Nostro: </span>11990185079</li>
-                            						<li><span class="font-weight-600 text-black-222">Branch Code: </span>18107</li>
+                            						<li><span class="font-weight-600 text-black-222"><strong>ZWL RTGS Local</strong>: </span>NEDBANK- Avondale Branch (Account No: 11990081966 | Branch Code: 18107) ZWL</li>
+                            						<li><span class="font-weight-600 text-black-222"><strong>USD FCA Nostro</strong>: </span>NEDBANK Avondale Branch (Account No: 1990185079 | Branch Code: 1801) USD</li>
+                            						<li><span class="font-weight-600 text-black-222"><strong>Ecocash Code</strong>: </span>Merchant Code - 98264 (dial *151*2*2*98264#)</li>
                             					  </ul>
                             					</div>
                             			  </div>
                             		</div>
                             	</div>
-                                
+
                                  <div class="container-fluid mt-5 w-100">
                                     <div class="row">
                                         <div class="col-md-6 ms-auto">
@@ -136,7 +137,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="container-fluid w-100">
 
                                     <button type="submit" class="btn btn-outline-primary mt-4"><i

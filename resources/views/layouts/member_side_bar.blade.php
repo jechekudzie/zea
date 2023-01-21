@@ -48,7 +48,11 @@
             @if(strtolower($member->member_category->name) != 'institution')
                 <div class="mt-3">
                     <label class="tx-11 fw-bolder mb-0 text-uppercase">Gender:</label>
-                    <p class="text-muted">{{ strtolower($member->member_category->name) == 'institution' ? '' : $member->gender->name }}</p>
+                    <p class="text-muted">
+                        @if($member->gender)
+                            {{$member->gender->name}}
+                        @endif
+                    </p>
                 </div>
             @endif
             <div class="mt-3 d-flex social-links">

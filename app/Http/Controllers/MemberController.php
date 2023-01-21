@@ -12,6 +12,9 @@ use App\Models\Payment;
 use App\Models\Province;
 use App\Models\Title;
 use App\Models\UserMember;
+use App\Notifications\MemberUpgrade;
+use App\Notifications\MemberUpgradeStatus;
+use App\Notifications\SubscriptionVerified;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -127,13 +130,34 @@ class MemberController extends Controller
         return view('members.show', compact('member'));
     }
 
+
     public function upgrade_downgrade_membership(Member $member)
     {
-       $member->update(request()->validate([
+        $member_category = request()->validate([
+            'member_category_id' => 'required'
+        ]);
+
+        $user = \App\Models\User::role('Admin')->first();
+
+        $user->notify(new MemberUpgrade($member, (int)$member_category['member_category_id']));
+
+        return back()->with('message', 'The upgrade request has been sent for approval. You will be notified soon!');
+    }
+
+    public function upgrade_membership_verification(Member $member, $member_category)
+    {
+        return view('members.upgrade_membership_verification', compact('member', 'member_category'));
+    }
+
+    public function upgrade_membership_verified(Member $member)
+    {
+        $member_category = $member->update(request()->validate([
             'member_category_id' => 'required'
         ]));
 
-       return back()->with('message','Member category upgrade/downgraded.');
+        $user = $member->user_member->user;
+        $user->notify(new MemberUpgradeStatus($member));
+        return redirect('/members/'.$member->id)->with('message', 'You membership has been upgraded successfully!.');
     }
 
     public function edit(Member $member)

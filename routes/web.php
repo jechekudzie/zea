@@ -92,6 +92,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/admin/roles', RolesController::class);
         Route::resource('/admin/permissions', PermissionsController::class);
         Route::resource('/admin/rate', RateController::class);
+
+        Route::get('/members/upgrade_membership_verification/{member}/{member_category}', [MemberController::class,'upgrade_membership_verification']);
+        Route::post('/members/upgrade_membership_verified/{member}', [MemberController::class,'upgrade_membership_verified']);
+
     });
 });
 
