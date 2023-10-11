@@ -236,7 +236,7 @@
                                         <tr>
                                         <tr>
                                             <td align="center">
-                                                <img editable="true" src="{{asset('logo.png')}}" alt="img" width="100"
+                                                <img editable="true" src="{{asset('/logo.png')}}" alt="img" width="100"
                                                      height="50" class="img_scale"
                                                      style="border: none; display: block;">
                                             </td>

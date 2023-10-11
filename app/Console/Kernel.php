@@ -23,7 +23,7 @@ class Kernel extends ConsoleKernel
     {
         //$schedule->command('queue:work --daemon')->twiceMonthly(1, 15, '00:00')->withoutOverlapping();
         //$schedule->command('queue:work --daemon')->twiceDaily(3, 13)->withoutOverlapping();
-        $schedule->command('queue:work --daemon')->everyMinute()->withoutOverlapping();
+        //$schedule->command('queue:work --daemon')->everyMinute()->withoutOverlapping();
 
         //$schedule->command('emails:work')->everyMinute()->withoutOverlapping();
     }

@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="/dashboard/vendors/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css">
     <!-- End plugin css for this page -->
 
-
 @endpush
 @section('content')
 
@@ -63,7 +62,7 @@
                 </div>
                 <div class="col-md-12 col-lg-12 mb-3">
                     <label for="name" class="form-label">Subject </label>
-                    <input id="name" class="form-control" name="subject" type="text">
+                    <input id="name" class="form-control" name="subject" type="text" value="">
                 </div>
 
                 <div class="col-md-12 col-lg-12 mb-3">

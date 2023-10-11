@@ -32,7 +32,14 @@ class MessageController extends Controller
             'body' => ['required', 'min:10'],
         ]);
 
-        $path = '';
+        $path = ''; // Initialize path
+
+        if (request()->hasfile('file')) {
+            $file = request()->file('file');
+            $name = $file->getClientOriginalName();
+            $file_name = time() . $name;
+            $path = $file->move('email_attachments', $file_name); // Store the file path
+        }
 
         if ($message['group'] == 'subscribers') {
             $subscribers = Subscriber::all();
@@ -42,38 +49,21 @@ class MessageController extends Controller
             $subscribers = MemberContact::all();
         }
 
-        if (request()->hasfile('file')) {
-
-            $file = request()->file('file');
-
-            //get file original name
-            $name = $file->getClientOriginalName();
-
-            //create a unique file name using the time variable plus the name
-            $file_name = time() . $name;
-
-            //upload the file to a directory in Public folder
-            //$path = $file->move('email_attachments', $file_name);
-            $path = $file;
-
-        }
-
         foreach ($subscribers as $subscriber) {
             try {
                 $subscriber_id = $subscriber->id;
                 if ($message['group'] == 'members') {
-
-                    Mail::to($subscriber->contact_email)->send(new \App\Mail\Message($message, $subscriber_id,$path));
+                    Mail::to($subscriber->contact_email)->queue(new \App\Mail\Message($message, $subscriber_id, $path));
                 }
-                Mail::to($subscriber->email)->send(new \App\Mail\Message($message, $subscriber_id,$path));
-
+                Mail::to($subscriber->email)->queue(new \App\Mail\Message($message, $subscriber_id, $path));
             } catch (\Exception $exception) {
                 Log::error($exception);
             }
         }
 
-        return back()->with('message', 'message successfully added.');
+        return back()->with('message', 'Message successfully added.');
     }
+
 
     public function edit(Message $message)
     {

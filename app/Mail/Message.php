@@ -34,7 +34,11 @@ class Message extends Mailable /*implements ShouldQueue*/
      */
     public function build()
     {
-        return $this->attach($this->path)
-            ->markdown('mail.message');
+        if ($this->path != null) {
+            return $this->attach($this->path)
+                ->markdown('mail.message')->from('admin@zimevalassoc.org', 'ZEA Administration');
+        } else {
+            return $this->markdown('mail.message')->from('admin@zimevalassoc.org', 'ZEA Administration');
+        }
     }
 }

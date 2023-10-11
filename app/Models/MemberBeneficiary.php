@@ -20,6 +20,5 @@ class MemberBeneficiary extends Model
     {
         return Member::find($beneficiary);
 
-
     }
 }
